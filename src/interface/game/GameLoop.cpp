@@ -1,8 +1,9 @@
-#pragma once
 
 #include <chrono>
 
 #include "GameLoop.h"
+
+GameLoop::~GameLoop() {}
 
 void GameLoop::Go() {
     int frames = 0;

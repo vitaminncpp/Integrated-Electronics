@@ -2,8 +2,8 @@
 #include "../gui/GameWindow.h"
 
 int main() {
-    Window window("Hello World", 100, 100, 1366, 768);
-    window.Show();
+    GameWindow *window = new GameWindow("Game", 1366, 768);
+    delete window;
     return 0;
 }
 

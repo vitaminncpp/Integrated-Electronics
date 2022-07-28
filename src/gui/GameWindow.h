@@ -11,24 +11,24 @@ private:
 
 
 public:
-    GameWindow(const std::string &title, int width, int height);
+    explicit GameWindow(const std::string &title, int width, int height);
 
-    ~GameWindow();
+    ~GameWindow() override;
 
-    void Init();
+    void Init() override;
 
-    void Update();
+    void Update() override;
 
-    void Render();
+    void Render() override;
 
-    void Reset();
+    void Reset() override;
 
-    void EndFrame();
+    void EndFrame() override;
 
-    void BeginFrame();
+    void BeginFrame() override;
 
-    void Close();
+    void Close() override;
 
-    void Show();
+    void Show() override;
 };
 

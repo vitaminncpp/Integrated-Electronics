@@ -19,7 +19,7 @@ public:
         return this->isRunning;
     }
 
-    virtual ~GameLoop() = 0;
+    virtual ~GameLoop();
 
 public:
     virtual void Init();
