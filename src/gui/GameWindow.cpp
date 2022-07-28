@@ -65,4 +65,36 @@ void GameWindow::Render() {
 
 void GameWindow::HandleInput() {
     Window::HandleInput();
+    SDL_Event event;
+    int mouseX;
+    int mouseY;
+
+    while (SDL_PollEvent(&event)) {
+        switch (event.type) {
+            case SDL_QUIT:
+                LOG("Event:Quit");
+                break;
+            case SDL_MOUSEBUTTONDOWN:
+                LOG("Event:MouseButtonDown");
+                break;
+            case SDL_MOUSEBUTTONUP:
+                LOG("Event:MouseButtonUp");
+                break;
+            case SDL_KEYDOWN:
+                LOG("Event:KeyDown");
+                break;
+            case SDL_KEYUP:
+                LOG("Event:KeyUp");
+                break;
+            case SDL_MOUSEWHEEL:
+                LOG("Event:MouseWheel");
+                break;
+            case SDL_MOUSEMOTION:
+                LOG("Event:MouseMotion");
+                break;
+            default:
+                LOG("Event:Invalid");
+                break;
+        }
+    }
 }

@@ -9,8 +9,6 @@ add_executable(Simulation
                 src/gui/GameWindow.cpp
                 src/game/Game.cpp 
                 src/sim/Simulation.cpp
-                src/sim/Simulation.h
-                src/interface/gfx/Drawable.h
                 src/lib/math/Vec2.cpp
                 src/interface/game/GameLoop.cpp
                 src/interface/window/Window.cpp
