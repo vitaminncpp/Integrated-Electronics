@@ -20,3 +20,11 @@ void Game::Update() {
 void Game::Reset() {
     GameLoop::Reset();
 }
+
+void Game::Enable() {
+    GameLoop::Enable();
+}
+
+void Game::Disable() {
+    GameLoop::Disable();
+}

@@ -2,11 +2,12 @@
 #include <chrono>
 
 #include "GameLoop.h"
+#include "../../util/util.h"
 
 GameLoop::~GameLoop() {}
 
 void GameLoop::Go() {
-    this->isRunning = true;
+    Enable();
     int frames = 0;
     double unprocessedSeconds = 0;
     double previousTime = std::chrono::high_resolution_clock::now().time_since_epoch().count();
@@ -17,11 +18,11 @@ void GameLoop::Go() {
     bool ticked = false;
 
     while (isRunning) {
+
         double currentTime = std::chrono::high_resolution_clock::now().time_since_epoch().count();
         double passedTime = currentTime - previousTime;
 
         previousTime = currentTime;
-
         unprocessedSeconds = unprocessedSeconds + passedTime / 1000000000.0;
 
         int count = 0;

@@ -19,4 +19,8 @@ public:
     void Reset() override;
 
     void Go() override;
+
+    void Enable() override;
+
+    void Disable() override;
 };

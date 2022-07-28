@@ -27,28 +27,23 @@ void GameWindow::Init() {
     Window::Init();
 
 
-    if (SDL_Init(SDL_INIT_EVERYTHING)) {
-        LOG("Subsystem Initialized");
-        window = SDL_CreateWindow(
-                this->GetTitle().c_str(),
-                100, 100,
-                this->GetWidth(), this->GetHeight(),
-                SDL_WINDOW_SHOWN
-        );
-        if (window) {
-            LOG("Window Created");
-        }
+    LOG("Subsystem Initialized");
+    window = SDL_CreateWindow(
+            this->GetTitle().c_str(),
+            100, 100,
+            this->GetWidth(), this->GetHeight(),
+            SDL_WINDOW_SHOWN
+    );
+    if (window) {
+        LOG("Window Created");
+    }
 
 
-        renderer = SDL_CreateRenderer(window, 0, 0);
-        LOG("Just to make sure that Renderer initialize with Direct3D11 backend");
+    renderer = SDL_CreateRenderer(window, 0, 0);
+    LOG("Just to make sure that Renderer initialize with Direct3D11 backend");
 
-        if (renderer) {
-            LOG("Renderer is Created Successfully");
-        }
-
-    } else {
-        LOG("Subsystem Failed");
+    if (renderer) {
+        LOG("Renderer is Created Successfully");
     }
 }
 
