@@ -1,7 +1,7 @@
 #pragma once
 
 #include <SDL.h>
-#include "../interface/game/GameLoop.h"
+#include "../interface/window/Window.h"
 
 
 class GameWindow : public Window {

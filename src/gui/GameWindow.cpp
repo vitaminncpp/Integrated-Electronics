@@ -8,11 +8,11 @@ GameWindow::GameWindow(const std::string &title, int width, int height)
 
     window = SDL_CreateWindow(
             title.c_str(),
-            x, y,
+            100, 100,
             width, height,
             SDL_WINDOW_SHOWN
     );
-    if (window == NULL) {
+    if (window == nullptr) {
         LOG("could not create Window");
         exit(1);
     }
@@ -20,19 +20,26 @@ GameWindow::GameWindow(const std::string &title, int width, int height)
 }
 
 GameWindow::~GameWindow() {
+    Window::~Window();
     if (window != nullptr) {
         SDL_DestroyWindow(window);
     }
 }
 
 void GameWindow::Show() {
+    Window::Show();
     SDL_ShowWindow(window);
 }
 
 void GameWindow::Close() {
+    Window::Close();
     SDL_HideWindow(window);
 }
 
 void GameWindow::Reset() {
+    Window::Reset();
+}
 
+void GameWindow::Init() {
+    Window::Init();
 }

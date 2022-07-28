@@ -2,7 +2,7 @@
 
 class Input {
 public:
-    inline Input();
+    inline explicit Input() {};
 
-    virtual ~Input() = 0;
+    virtual ~Input();
 };

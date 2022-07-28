@@ -3,12 +3,21 @@
 #include <string>
 
 class Window {
+private:
+    int height;
     int width;
+    std::string title;
 public:
+    inline Window(const std::string &title, int width, int height)
+            : title(title), width(width), height(height) {}
+
+    virtual ~Window();
+
     inline int GetWidth() const {
         return width;
     }
 
+public:
     inline void SetWidth(int width) {
         this->width = width;
     }
@@ -29,27 +38,21 @@ public:
         this->title = title;
     }
 
-private:
-    int height;
-    std::string title;
-public:
-    inline Window(const std::string &title, int width, int height)
-            : title(title), width(width), height(height) {}
 
-    virtual void Init() = 0;
+    virtual void Init();
 
-    virtual void Update() = 0;
+    virtual void Update();
 
-    virtual void Render() = 0;
+    virtual void Render();
 
-    virtual void Reset() = 0;
+    virtual void Reset();
 
-    virtual void EndFrame() = 0;
+    virtual void EndFrame();
 
-    virtual void BeginFrame() = 0;
+    virtual void BeginFrame();
 
-    virtual void Close() = 0;
+    virtual void Close();
 
-    virtual void Show() = 0;
+    virtual void Show();
 
 };

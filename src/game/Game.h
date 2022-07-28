@@ -1,14 +1,22 @@
 #pragma once
 
-class Game {
+#include "../interface/game/GameLoop.h"
+
+class Game : public GameLoop {
 private:
 
 public:
-    Game();
+    inline explicit Game(Window *window) : GameLoop(window) {
 
-    void Update();
+    }
 
-    void Render();
+    void Update() override;
 
-    void Go();
+    void Render() override;
+
+    void Init() override;
+
+    void Reset() override;
+
+    void Go() override;
 };

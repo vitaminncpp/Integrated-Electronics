@@ -1,25 +1,34 @@
 #pragma once
 
-#include "../interface/window/Window.h"
+#include "../window/Window.h"
 
 class GameLoop {
 private:
+    bool isRunning = false;
     Window *window;
 public:
-    inline GameLoop(Window *window) {
+    inline explicit GameLoop(Window *window) {
         this->window = window;
+    }
+
+    inline Window *GetWindow() const {
+        return this->window;
+    }
+
+    inline bool IsRunning() const {
+        return this->isRunning;
     }
 
     virtual ~GameLoop() = 0;
 
 public:
-    virtual void Init() = 0;
+    virtual void Init();
 
-    virtual void Reset() = 0;
+    virtual void Reset();
 
-    virtual void Update() = 0;
+    virtual void Update();
 
-    virtual void Render() = 0;
+    virtual void Render();
 
     virtual void Go();
 };
