@@ -17,3 +17,5 @@ void Window::EndFrame() {}
 void Window::Show() {}
 
 void Window::Close() {}
+
+void Window::HandleInput() {}

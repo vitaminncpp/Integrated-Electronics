@@ -1,22 +1,7 @@
-#include <chrono>
-#include <thread>
+
 #include "../util/util.h"
 #include "GameWindow.h"
 
-GameWindow::GameWindow(const std::string &title, int width, int height)
-        : Window(title, width, height) {
-    window = SDL_CreateWindow(
-            title.c_str(),
-            100, 100,
-            width, height,
-            SDL_WINDOW_SHOWN
-    );
-    if (window == nullptr) {
-        LOG("could not create Window");
-        exit(1);
-    }
-    std::this_thread::sleep_for(std::chrono::milliseconds(10000));
-}
 
 GameWindow::~GameWindow() {
     if (window != nullptr) {
@@ -40,6 +25,31 @@ void GameWindow::Reset() {
 
 void GameWindow::Init() {
     Window::Init();
+
+
+    if (SDL_Init(SDL_INIT_EVERYTHING)) {
+        LOG("Subsystem Initialized");
+        window = SDL_CreateWindow(
+                this->GetTitle().c_str(),
+                100, 100,
+                this->GetWidth(), this->GetHeight(),
+                SDL_WINDOW_SHOWN
+        );
+        if (window) {
+            LOG("Window Created");
+        }
+
+
+        renderer = SDL_CreateRenderer(window, 0, 0);
+        LOG("Just to make sure that Renderer initialize with Direct3D11 backend");
+
+        if (renderer) {
+            LOG("Renderer is Created Successfully");
+        }
+
+    } else {
+        LOG("Subsystem Failed");
+    }
 }
 
 void GameWindow::BeginFrame() {
@@ -56,4 +66,8 @@ void GameWindow::Update() {
 
 void GameWindow::Render() {
     Window::Render();
+}
+
+void GameWindow::HandleInput() {
+    Window::HandleInput();
 }

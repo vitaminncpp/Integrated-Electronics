@@ -31,4 +31,10 @@ public:
     virtual void Render();
 
     virtual void Go();
+
+    virtual void HandleInput();
+
+    virtual void Enable();
+
+    virtual void Disable();
 };

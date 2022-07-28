@@ -6,6 +6,7 @@
 GameLoop::~GameLoop() {}
 
 void GameLoop::Go() {
+    this->isRunning = true;
     int frames = 0;
     double unprocessedSeconds = 0;
     double previousTime = std::chrono::high_resolution_clock::now().time_since_epoch().count();
@@ -25,6 +26,7 @@ void GameLoop::Go() {
 
         int count = 0;
         while (unprocessedSeconds > secondsForEachTick) {
+            HandleInput();
             Update();
             count++;
             unprocessedSeconds -= secondsForEachTick;
@@ -49,6 +51,21 @@ void GameLoop::Render() {}
 
 void GameLoop::Update() {}
 
-void GameLoop::Init() {}
+void GameLoop::Init() {
+
+}
+
 
 void GameLoop::Reset() {}
+
+void GameLoop::HandleInput() {
+    window->HandleInput();
+}
+
+void GameLoop::Enable() {
+    this->isRunning = true;
+}
+
+void GameLoop::Disable() {
+    this->isRunning = false;
+}

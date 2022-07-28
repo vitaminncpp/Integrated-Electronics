@@ -11,7 +11,10 @@ private:
 
 
 public:
-    explicit GameWindow(const std::string &title, int width, int height);
+    inline explicit GameWindow(const std::string &title, int width, int height)
+            : Window(title, width, height) {
+        Init();
+    }
 
     ~GameWindow() override;
 
@@ -30,5 +33,7 @@ public:
     void Close() override;
 
     void Show() override;
+
+    void HandleInput() override;
 };
 

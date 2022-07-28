@@ -55,4 +55,5 @@ public:
 
     virtual void Show();
 
+    virtual void HandleInput();
 };

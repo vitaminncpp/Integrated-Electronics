@@ -7,7 +7,7 @@ private:
 
 public:
     inline explicit Game(Window *window) : GameLoop(window) {
-
+        Init();
     }
 
     void Update() override;
