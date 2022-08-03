@@ -10,6 +10,9 @@ public:
         Init();
     }
 
+    inline ~Game() {
+    }
+
     void Update() override;
 
     void Render() override;
@@ -23,4 +26,6 @@ public:
     void Enable() override;
 
     void Disable() override;
+
+    void SendEvent(const Event &event) override;
 };

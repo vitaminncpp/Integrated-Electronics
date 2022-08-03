@@ -1,12 +1,14 @@
 #pragma once
 
 #include <string>
+#include "../io/InputBridge.h"
 
 class Window {
 private:
     int height;
     int width;
     std::string title;
+    const InputBridge *input;
 public:
     inline Window(const std::string &title, int width, int height)
             : title(title), width(width), height(height) {}
@@ -38,6 +40,9 @@ public:
         this->title = title;
     }
 
+    inline void SetInputBridge(const InputBridge *input) {
+        this->input = input;
+    }
 
     virtual void Init();
 

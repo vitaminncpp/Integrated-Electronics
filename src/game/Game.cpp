@@ -28,3 +28,7 @@ void Game::Enable() {
 void Game::Disable() {
     GameLoop::Disable();
 }
+
+void Game::SendEvent(const Event &event) {
+    
+}

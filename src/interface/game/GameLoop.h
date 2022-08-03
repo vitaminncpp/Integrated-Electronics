@@ -1,8 +1,9 @@
 #pragma once
 
 #include "../window/Window.h"
+#include "../io/InputBridge.h"
 
-class GameLoop {
+class GameLoop : public InputBridge {
 private:
     bool isRunning = false;
     Window *window;
@@ -37,4 +38,6 @@ public:
     virtual void Enable();
 
     virtual void Disable();
+
+    void SendEvent(const Event &event) override = 0;
 };
