@@ -29,5 +29,4 @@ public:
 
     ~SDL_Image() override;
 
-    void Render() override;
 };

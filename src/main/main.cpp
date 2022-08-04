@@ -1,5 +1,5 @@
 #include <iostream>
-#include "../gui/window/GameWindow.h"
+#include "../simulation/window/GameWindow.h"
 #include "../game/Game.h"
 
 int main() {
@@ -8,5 +8,6 @@ int main() {
     window->SetInputBridge(game);
     game->Go();
     return 0;
+    std::cout << std::endl;
 }
 

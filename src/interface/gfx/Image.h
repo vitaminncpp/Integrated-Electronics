@@ -4,7 +4,7 @@
 #include "../../lib/math/Vec2.h"
 #include "Drawable.h"
 
-class Image : public Drawable {
+class Image {
 
 private:
     Vec2 pos;
@@ -15,6 +15,8 @@ public:
 
     }
 
+    virtual ~Image();
+
     inline Vec2 &GetPos() {
         return this->pos;
     }
@@ -22,17 +24,4 @@ public:
     inline Vec2 &GetSize() {
         return this->size;
     }
-
-    void Render() override;
-
-    ~Image() override;
-
-    void Scale(double s) override;
-
-    void Scale(const Vec2 &s) override;
-
-    void Translate(const Vec2 &d) override;
-
-    void Rotate(double t) override;
-
 };

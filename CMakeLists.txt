@@ -6,9 +6,9 @@ find_package(SDL2 REQUIRED)
 
 add_executable(Simulation
         src/main/main.cpp
-        src/gui/window/GameWindow.cpp
+        src/simulation/window/GameWindow.cpp
         src/game/Game.cpp
-        src/sim/Simulation.cpp
+        src/core/Simulation.cpp
         src/lib/math/Vec2.cpp
         src/interface/game/GameLoop.cpp
         src/interface/window/Window.cpp
@@ -17,10 +17,8 @@ add_executable(Simulation
         src/interface/io/Event.h
         src/interface/gfx/Drawable.h
         src/interface/gfx/Image.h
-        src/gui/gfx/SDL_Drawable.cpp
-        src/gui/gfx/SDL_Drawable.h
-        src/gui/gfx/SDL_Image.cpp
-        src/gui/gfx/SDL_Image.h src/interface/gfx/Renderer.cpp src/interface/gfx/Renderer.h src/interface/gfx/Drawable.cpp src/interface/gfx/Image.cpp)
+        src/simulation/gfx/SDL_Image.cpp
+        src/simulation/gfx/SDL_Image.h src/interface/gfx/Renderer.cpp src/interface/gfx/Renderer.h src/interface/gfx/Drawable.cpp src/interface/gfx/Image.cpp src/core/components/Component.cpp src/core/components/Component.h src/simulation/gfx/SDL_Context.cpp src/simulation/gfx/SDL_Context.h)
 
 
 target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2::SDL2-static)

@@ -2,10 +2,6 @@
 
 #include "SDL_Image.h"
 
-void SDL_Image::Render() {
-    SDL_RenderCopy(renderer, texture, NULL, &rect);
-}
-
 SDL_Image::~SDL_Image() {
     if (texture != nullptr) {
         SDL_DestroyTexture(texture);
