@@ -8,3 +8,8 @@
 #else
 #define LOG(msg)
 #endif // !NDEBUG
+
+
+namespace util {
+
+}

@@ -1,6 +1,8 @@
 
 #include "Game.h"
 
+using namespace game;
+
 void Game::Go() {
     GameLoop::Go();
 }
@@ -29,6 +31,6 @@ void Game::Disable() {
     GameLoop::Disable();
 }
 
-void Game::SendEvent(const Event &event) {
-    
+void Game::SendEvent(const interface::io::Event &event) {
+
 }

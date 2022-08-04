@@ -1,6 +1,8 @@
 
 #include "Simulation.h"
 
+using namespace core;
+
 Simulation::Simulation() {
 }
 

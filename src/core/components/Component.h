@@ -2,14 +2,18 @@
 
 #include "../../interface/gfx/Drawable.h"
 
-class Component : public Drawable {
-public:
-    inline explicit Component() {};
 
-    virtual ~Component();
+namespace core::components {
 
-    virtual void Render();
+    class Component : public interface::gfx::Drawable {
+    public:
+        inline explicit Component(interface::gfx::Renderer *renderer) : Drawable(renderer) {};
 
-    virtual void Update();
+        virtual ~Component();
 
-};
+        virtual void Render();
+
+        virtual void Update();
+
+    };
+}

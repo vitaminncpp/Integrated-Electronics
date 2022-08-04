@@ -2,30 +2,34 @@
 
 #include "../interface/game/GameLoop.h"
 
-class Game : public GameLoop {
-private:
 
-public:
-    inline explicit Game(Window *window) : GameLoop(window) {
-        Init();
-    }
+namespace game {
 
-    inline ~Game() {
-    }
+    class Game : public interface::game::GameLoop {
+    private:
 
-    void Update() override;
+    public:
+        inline explicit Game(interface::window::Window *window) : GameLoop(window) {
+            Init();
+        }
 
-    void Render() override;
+        inline ~Game() {
+        }
 
-    void Init() override;
+        void Update() override;
 
-    void Reset() override;
+        void Render() override;
 
-    void Go() override;
+        void Init() override;
 
-    void Enable() override;
+        void Reset() override;
 
-    void Disable() override;
+        void Go() override;
 
-    void SendEvent(const Event &event) override;
-};
+        void Enable() override;
+
+        void Disable() override;
+
+        void SendEvent(const interface::io::Event &event) override;
+    };
+}

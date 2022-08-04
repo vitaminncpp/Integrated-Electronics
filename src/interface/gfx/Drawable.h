@@ -3,28 +3,33 @@
 #include "../../lib/math/Vec2.h"
 #include "Renderer.h"
 
-class Drawable {
-protected:
-    Renderer *renderer = nullptr;
-public:
-    inline explicit Drawable(Renderer *renderer)
-            : renderer(renderer) {};
 
-    virtual ~Drawable();
+namespace interface::gfx {
 
-    inline void SetRenderer(Renderer *renderer) {
-        this->renderer = renderer;
-    }
+    class Drawable {
+    protected:
+        interface::gfx::Renderer *renderer = nullptr;
+    public:
+        inline explicit Drawable(interface::gfx::Renderer *renderer)
+                : renderer(renderer) {};
 
-public:
-    virtual void Render();
+        virtual ~Drawable();
 
-    virtual void Scale(double s);
+        inline void SetRenderer(interface::gfx::Renderer *renderer) {
+            this->renderer = renderer;
+        }
 
-    virtual void Scale(const Vec2 &s);
+    public:
+        virtual void Render();
 
-    virtual void Translate(const Vec2 &d);
+        virtual void Scale(double s);
 
-    virtual void Rotate(double t);
+        virtual void Scale(const lib::math::Vec2 &s);
 
-};
+        virtual void Translate(const lib::math::Vec2 &d);
+
+        virtual void Rotate(double t);
+
+    };
+}
+

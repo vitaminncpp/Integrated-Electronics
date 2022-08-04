@@ -2,12 +2,16 @@
 
 #include "Event.h"
 
-class InputBridge {
-public:
-    inline InputBridge() {}
+namespace interface {
+    namespace io {
+        class InputBridge {
+        public:
+            inline InputBridge() {}
 
-    inline virtual ~InputBridge() {}
+            inline virtual ~InputBridge() {}
 
-public:
-    virtual void SendEvent(const Event &event) = 0;
-};
+        public:
+            virtual void SendEvent(const Event &event) = 0;
+        };
+    }
+}

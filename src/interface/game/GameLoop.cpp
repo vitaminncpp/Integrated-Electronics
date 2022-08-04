@@ -4,6 +4,8 @@
 #include "GameLoop.h"
 #include "../../util/util.h"
 
+using namespace interface::game;
+
 GameLoop::~GameLoop() {}
 
 void GameLoop::Go() {

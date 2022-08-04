@@ -2,6 +2,7 @@
 #include "../../util/util.h"
 #include "GameWindow.h"
 
+using namespace simulation::window;
 
 GameWindow::~GameWindow() {
     if (window != nullptr) {

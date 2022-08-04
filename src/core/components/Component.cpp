@@ -1,6 +1,8 @@
-#pragma once
+
 
 #include "Component.h"
+
+using namespace core::components;
 
 Component::~Component() {}
 

@@ -3,41 +3,46 @@
 #include "../window/Window.h"
 #include "../io/InputBridge.h"
 
-class GameLoop : public InputBridge {
-private:
-    bool isRunning = false;
-    Window *window;
-public:
-    inline explicit GameLoop(Window *window) {
-        this->window = window;
-    }
 
-    inline Window *GetWindow() const {
-        return this->window;
-    }
+namespace interface::game {
 
-    inline bool IsRunning() const {
-        return this->isRunning;
-    }
 
-    virtual ~GameLoop();
+    class GameLoop : public interface::io::InputBridge {
+    private:
+        bool isRunning = false;
+        interface::window::Window *window;
+    public:
+        inline explicit GameLoop(interface::window::Window *window) {
+            this->window = window;
+        }
 
-public:
-    virtual void Init();
+        inline interface::window::Window *GetWindow() const {
+            return this->window;
+        }
 
-    virtual void Reset();
+        inline bool IsRunning() const {
+            return this->isRunning;
+        }
 
-    virtual void Update();
+        virtual ~GameLoop();
 
-    virtual void Render();
+    public:
+        virtual void Init();
 
-    virtual void Go();
+        virtual void Reset();
 
-    virtual void HandleInput();
+        virtual void Update();
 
-    virtual void Enable();
+        virtual void Render();
 
-    virtual void Disable();
+        virtual void Go();
 
-    void SendEvent(const Event &event) override = 0;
-};
+        virtual void HandleInput();
+
+        virtual void Enable();
+
+        virtual void Disable();
+
+        void SendEvent(const interface::io::Event &event) override = 0;
+    };
+}

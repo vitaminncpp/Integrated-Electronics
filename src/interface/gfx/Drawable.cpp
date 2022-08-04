@@ -1,7 +1,8 @@
-#pragma once
 
 #include "Drawable.h"
 
+using namespace interface::gfx;
+using namespace lib::math;
 
 Drawable::~Drawable() {}
 

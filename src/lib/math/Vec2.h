@@ -1,122 +1,129 @@
 #pragma once
 
-class Vec2 {
-private:
-    double x;
-    double y;
-    double r;
-    double t;
+namespace lib::math {
 
-private:
-    void AdjustXY();
+    class Vec2 {
+    private:
+        double x;
+        double y;
+        double r;
+        double t;
 
-    void AdjustRT();
+    private:
+        void AdjustXY();
 
-public:
-    Vec2();
+        void AdjustRT();
 
-    Vec2(double x, double y);
+    public:
+        Vec2();
 
-    Vec2(double r, double t, bool f);
+        Vec2(double x, double y);
 
-    ~Vec2();
+        Vec2(double r, double t, bool f);
 
-    Vec2(const Vec2 &v);
+        ~Vec2();
 
-    Vec2 &operator=(const Vec2 &v);
+        Vec2(const Vec2 &v);
 
-    Vec2 operator-() const;
+        Vec2 &operator=(const Vec2 &v);
 
-    Vec2 operator+(const Vec2 &v) const;
+        Vec2 operator-() const;
 
-    Vec2 operator+(const double r) const;
+        Vec2 operator+(const Vec2 &v) const;
 
-    Vec2 &operator+=(const Vec2 &v);
+        Vec2 operator+(const double r) const;
 
-    Vec2 &operator+=(const double);
+        Vec2 &operator+=(const Vec2 &v);
 
-    Vec2 operator-(const Vec2 &v) const;
+        Vec2 &operator+=(const double);
 
-    Vec2 &operator-=(const Vec2 &v);
+        Vec2 operator-(const Vec2 &v) const;
 
-    Vec2 &operator-=(double r);
+        Vec2 &operator-=(const Vec2 &v);
 
-    Vec2 operator*(double s) const;
+        Vec2 &operator-=(double r);
 
-    Vec2 &operator*=(double s);
+        Vec2 operator*(double s) const;
 
-    Vec2 operator/(double sd) const;
+        Vec2 operator*(const Vec2 &) const;
 
-    Vec2 &operator/=(double d);
+        Vec2 &operator*=(double s);
 
-    Vec2 &Norm();
+        Vec2 &operator*=(const Vec2 &s);
 
-    Vec2 GetNorm() const;
+        Vec2 operator/(double sd) const;
 
-    Vec2 &Ortho();
+        Vec2 &operator/=(double d);
 
-    Vec2 GetOrtho() const;
+        Vec2 &Norm();
 
-    double Dot(const Vec2 &v);
+        Vec2 GetNorm() const;
 
-    double Cross(const Vec2 &v);
+        Vec2 &Ortho();
 
-    double Distance(const Vec2 &v);
+        Vec2 GetOrtho() const;
 
-    Vec2 &Rotate(double t);
+        double Dot(const Vec2 &v);
 
-    Vec2 GetRotate(double t);
+        double Cross(const Vec2 &v);
 
-    Vec2 &Rotate(double t, const Vec2 &v);
+        double Distance(const Vec2 &v);
 
-    Vec2 GetRotate(double t, const Vec2 &v);
+        Vec2 &Rotate(double t);
 
-    inline double GetX() const {
-        return this->x;
-    }
+        Vec2 GetRotate(double t);
 
-    inline double GetY() const {
-        return this->y;
-    }
+        Vec2 &Rotate(double t, const Vec2 &v);
 
-    inline double GetR() const {
-        return this->r;
-    }
+        Vec2 GetRotate(double t, const Vec2 &v);
 
-    inline double GetT() const {
-        return this->t;
-    }
+        inline double GetX() const {
+            return this->x;
+        }
 
-    inline void SetX(double x) {
-        this->x = x;
-        this->AdjustRT();
-    }
+        inline double GetY() const {
+            return this->y;
+        }
 
-    inline void SetY(double y) {
-        this->y = y;
-        AdjustRT();
-    }
+        inline double GetR() const {
+            return this->r;
+        }
 
-    inline void SetR(double r) {
-        this->r = r;
-        this->AdjustXY();
-    }
+        inline double GetT() const {
+            return this->t;
+        }
 
-    inline void SetT(double t) {
-        this->t = t;
-        this->AdjustXY();
-    }
+        inline void SetX(double x) {
+            this->x = x;
+            this->AdjustRT();
+        }
 
-    inline void SetXY(double x, double y) {
-        this->x = x;
-        this->y = y;
+        inline void SetY(double y) {
+            this->y = y;
+            AdjustRT();
+        }
 
-        AdjustRT();
-    }
+        inline void SetR(double r) {
+            this->r = r;
+            this->AdjustXY();
+        }
 
-    inline void SetRT(double r, double t) {
-        this->r = r;
-        this->t = t;
-        AdjustXY();
-    }
-};
+        inline void SetT(double t) {
+            this->t = t;
+            this->AdjustXY();
+        }
+
+        inline void SetXY(double x, double y) {
+            this->x = x;
+            this->y = y;
+
+            AdjustRT();
+        }
+
+        inline void SetRT(double r, double t) {
+            this->r = r;
+            this->t = t;
+            AdjustXY();
+        }
+    };
+}

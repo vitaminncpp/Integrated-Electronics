@@ -3,62 +3,68 @@
 #include <string>
 #include "../io/InputBridge.h"
 
-class Window {
-private:
-    int height;
-    int width;
-    std::string title;
-    const InputBridge *input;
-public:
-    inline Window(const std::string &title, int width, int height)
-            : title(title), width(width), height(height) {}
 
-    virtual ~Window();
+namespace interface::window {
 
-    inline int GetWidth() const {
-        return width;
-    }
+    class Window {
+    private:
+        int height;
+        int width;
+        std::string title;
+        const interface::io::InputBridge *input;
+    public:
+        inline Window(const std::string &title, int width, int height)
+                : title(title), width(width), height(height) {}
 
-public:
-    inline void SetWidth(int width) {
-        this->width = width;
-    }
+        virtual ~Window();
 
-    inline int GetHeight() const {
-        return this->height;
-    }
+        inline int GetWidth() const {
+            return width;
+        }
 
-    inline void SetHeight(int height) {
-        this->height = height;
-    }
+    public:
+        inline void SetWidth(int width) {
+            this->width = width;
+        }
 
-    inline const std::string &GetTitle() const {
-        return this->title;
-    }
+        inline int GetHeight() const {
+            return this->height;
+        }
 
-    inline void SetTitle(const std::string &title) {
-        this->title = title;
-    }
+        inline void SetHeight(int height) {
+            this->height = height;
+        }
 
-    inline void SetInputBridge(const InputBridge *input) {
-        this->input = input;
-    }
+        inline const std::string &GetTitle() const {
+            return this->title;
+        }
 
-    virtual void Init();
+        inline void SetTitle(const std::string &title) {
+            this->title = title;
+        }
 
-    virtual void Update();
+        inline void SetInputBridge(const interface::io::InputBridge *input) {
+            this->input = input;
+        }
 
-    virtual void Render();
+        virtual void Init();
 
-    virtual void Reset();
+        virtual void Update();
 
-    virtual void EndFrame();
+        virtual void Render();
 
-    virtual void BeginFrame();
+        virtual void Reset();
 
-    virtual void Close();
+        virtual void EndFrame();
 
-    virtual void Show();
+        virtual void BeginFrame();
 
-    virtual void HandleInput();
-};
+        virtual void Close();
+
+        virtual void Show();
+
+        virtual void HandleInput();
+    };
+}
+
+

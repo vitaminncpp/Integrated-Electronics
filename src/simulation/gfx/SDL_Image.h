@@ -7,26 +7,20 @@
 #include "../../interface/gfx/Image.h"
 #include "../../lib/math/Vec2.h"
 
-class SDL_Image : public Image {
-private:
-    SDL_Renderer *renderer;
-    SDL_Texture *texture;
-    SDL_Rect rect{};
 
-public:
-    inline explicit SDL_Image(SDL_Renderer *renderer, const Vec2 &pos, const Vec2 &size, std::string &imagePath) :
-            Image(pos, size), renderer(renderer), texture(nullptr) {
-        SDL_Surface *surface = SDL_LoadBMP(imagePath.c_str());
-        texture = SDL_CreateTextureFromSurface(this->renderer, surface);
+namespace simulation::gfx {
 
-        rect.x = pos.GetX();
-        rect.y = pos.GetY();
-        rect.w = size.GetX();
-        rect.h = size.GetY();
+    class SDL_Image : public interface::gfx::Image {
+    private:
+        SDL_Renderer *renderer;
+        SDL_Texture *texture;
+        SDL_Rect rect{};
 
-        SDL_FreeSurface(surface);
-    }
+    public:
+        explicit SDL_Image(SDL_Renderer *renderer, const lib::math::Vec2 &pos, const lib::math::Vec2 &size,
+                           std::string &imagePath);
 
-    ~SDL_Image() override;
+        ~SDL_Image() override;
 
-};
+    };
+}

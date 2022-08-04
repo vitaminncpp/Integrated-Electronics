@@ -2,6 +2,8 @@
 #include "util.h"
 #include "Vec2.h"
 
+using namespace lib::math;
+
 Vec2::Vec2() {
     this->x = 0;
     this->y = 0;
@@ -220,4 +222,15 @@ Vec2 Vec2::GetRotate(double t, const Vec2 &v) {
     Vec2 tmp(*this);
     tmp.Rotate(t, v);
     return tmp;
+}
+
+Vec2 Vec2::operator*(const Vec2 &s) const {
+    return Vec2(this->x * s.x, this->y * s.y);
+}
+
+Vec2 &Vec2::operator*=(const Vec2 &s) {
+    this->x *= s.x;
+    this->y *= s.y;
+    this->AdjustRT();
+    return *this;
 }

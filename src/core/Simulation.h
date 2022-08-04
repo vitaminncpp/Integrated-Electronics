@@ -3,15 +3,18 @@
 #include <vector>
 #include "components/Component.h"
 
-class Simulation {
-private:
-    std::vector<Component *> components;
-    int count;
+namespace core {
 
-public:
-    Simulation();
+    class Simulation {
+    private:
+        std::vector<core::components::Component> components;
+        int count;
 
-    inline int GetComponentCount() { return count; }
+    public:
+        Simulation();
 
-    ~Simulation();
-};
+        inline int GetComponentCount() { return count; }
+
+        ~Simulation();
+    };
+}

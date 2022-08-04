@@ -4,29 +4,39 @@
 #include "../../interface/gfx/Renderer.h"
 #include "SDL_Image.h"
 
-class SDL_Context : public Renderer {
-private:
-    SDL_Renderer *renderer;
 
-    inline explicit SDL_Context(SDL_Renderer *renderer)
-            : renderer(renderer) {
-    }
+namespace simulation::gfx {
 
-    ~SDL_Context();
+    class SDL_Context : public interface::gfx::Renderer {
+    private:
+        SDL_Renderer *renderer;
 
-    void Render(const Image &image) override;
+        inline explicit SDL_Context(SDL_Renderer *renderer)
+                : renderer(renderer) {
+        }
 
-    void Init() override;
+        inline SDL_Renderer *GetSDL_Renderer() const {
+            return this->renderer;
+        }
 
-    void Reset() override;
+        ~SDL_Context();
 
-    void Present() override;
+        void Render(const interface::gfx::Image &image) override;
 
-    void DrawLine(const Vec2 &v1, const Vec2 &v2) override;
+        void Init() override;
 
-    void Scale(double s) override;
+        void Reset() override;
 
-    void Scale(const Vec2 &s) override;
+        void Present() override;
 
-    void Translate(const Vec2 &d) override;
-};
+        void DrawLine(const lib::math::Vec2 &v1, const lib::math::Vec2 &v2) override;
+
+        void Scale(double s) override;
+
+        void Scale(const lib::math::Vec2 &s) override;
+
+        void Translate(const lib::math::Vec2 &d) override;
+
+        void Rotate(double t) override;
+    };
+}

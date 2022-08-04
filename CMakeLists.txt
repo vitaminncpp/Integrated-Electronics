@@ -10,15 +10,26 @@ add_executable(Simulation
         src/game/Game.cpp
         src/core/Simulation.cpp
         src/lib/math/Vec2.cpp
+        src/lib/math/Vec2.h
+        src/lib/math/util.cpp
+        src/lib/math/util.h
         src/interface/game/GameLoop.cpp
         src/interface/window/Window.cpp
         src/interface/io/Input.cpp
-        src/interface/io/Event.cpp
         src/interface/io/Event.h
         src/interface/gfx/Drawable.h
         src/interface/gfx/Image.h
         src/simulation/gfx/SDL_Image.cpp
-        src/simulation/gfx/SDL_Image.h src/interface/gfx/Renderer.cpp src/interface/gfx/Renderer.h src/interface/gfx/Drawable.cpp src/interface/gfx/Image.cpp src/core/components/Component.cpp src/core/components/Component.h src/simulation/gfx/SDL_Context.cpp src/simulation/gfx/SDL_Context.h)
+        src/simulation/gfx/SDL_Image.h
+        src/interface/gfx/Renderer.cpp
+        src/interface/gfx/Renderer.h
+        src/interface/gfx/Drawable.cpp
+        src/interface/gfx/Image.cpp
+        src/core/components/Component.cpp
+        src/core/components/Component.h
+        src/simulation/gfx/SDL_Context.cpp
+        src/simulation/gfx/SDL_Context.h
+        src/interface/gfx/Color.h)
 
 
 target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2::SDL2-static)

@@ -1,5 +1,7 @@
 #include "Window.h"
 
+using namespace interface::window;
+
 Window::~Window() = default;
 
 void Window::Init() {}
