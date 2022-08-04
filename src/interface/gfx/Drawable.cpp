@@ -8,10 +8,18 @@ Drawable::~Drawable() {}
 
 void Drawable::Render() {}
 
-void Drawable::Scale(const Vec2 &s) {}
+void Drawable::Scale(const Vec2 &s) {
+    this->scale *= s;
+}
 
-void Drawable::Scale(double s) {}
+void Drawable::Scale(double s) {
+    this->scale *= s;
+}
 
-void Drawable::Translate(const Vec2 &d) {}
+void Drawable::Translate(const Vec2 &d) {
+    this->translate += d;
+}
 
-void Drawable::Rotate(double t) {}
+void Drawable::Rotate(double t) {
+    this->rotation += t;
+}

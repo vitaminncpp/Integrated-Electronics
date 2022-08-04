@@ -1,5 +1,6 @@
 
 #include "SDL_Image.h"
+#include "../../util/util.h"
 
 using namespace simulation::gfx;
 using namespace lib::math;
@@ -21,6 +22,6 @@ SDL_Image::~SDL_Image() {
     if (texture != nullptr) {
         SDL_DestroyTexture(texture);
     } else {
-        throw std::runtime_error("SDL_Image::~SDL_Image() - texture is nullptr");
+        LOG("SDL_Image::~SDL_Image() - texture is nullptr");
     }
 }

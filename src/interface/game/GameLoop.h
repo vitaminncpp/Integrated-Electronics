@@ -2,15 +2,17 @@
 
 #include "../window/Window.h"
 #include "../io/InputBridge.h"
+#include "../gfx/Renderer.h"
 
 
 namespace interface::game {
 
 
     class GameLoop : public interface::io::InputBridge {
-    private:
+    protected:
         bool isRunning = false;
         interface::window::Window *window;
+        interface::gfx::Renderer *renderer = nullptr;
     public:
         inline explicit GameLoop(interface::window::Window *window) {
             this->window = window;
@@ -18,6 +20,10 @@ namespace interface::game {
 
         inline interface::window::Window *GetWindow() const {
             return this->window;
+        }
+
+        inline void SetRenderer(interface::gfx::Renderer *renderer) {
+            this->renderer = renderer;
         }
 
         inline bool IsRunning() const {
@@ -43,6 +49,6 @@ namespace interface::game {
 
         virtual void Disable();
 
-        void SendEvent(const interface::io::Event &event) override = 0;
+        void SendEvent(const interface::io::Event &event) override;
     };
 }

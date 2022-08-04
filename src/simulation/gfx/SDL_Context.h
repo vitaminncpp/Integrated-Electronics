@@ -10,9 +10,9 @@ namespace simulation::gfx {
     class SDL_Context : public interface::gfx::Renderer {
     private:
         SDL_Renderer *renderer;
-
+    public:
         inline explicit SDL_Context(SDL_Renderer *renderer)
-                : renderer(renderer) {
+                : renderer(renderer), Renderer() {
         }
 
         inline SDL_Renderer *GetSDL_Renderer() const {
@@ -21,7 +21,7 @@ namespace simulation::gfx {
 
         ~SDL_Context();
 
-        void Render(const interface::gfx::Image &image) override;
+        void DrawImage(const interface::gfx::Image &image) override;
 
         void Init() override;
 
@@ -38,5 +38,11 @@ namespace simulation::gfx {
         void Translate(const lib::math::Vec2 &d) override;
 
         void Rotate(double t) override;
+
+        void DrawShape(const interface::gfx::Shape &shape) override;
+
+        void SetColor(interface::gfx::Color color) override;
+
+        void BeginFrame() override;
     };
 }

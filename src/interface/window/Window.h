@@ -2,16 +2,17 @@
 
 #include <string>
 #include "../io/InputBridge.h"
-
+#include "../gfx/Renderer.h"
 
 namespace interface::window {
 
     class Window {
-    private:
+    protected:
         int height;
         int width;
         std::string title;
         const interface::io::InputBridge *input;
+        interface::gfx::Renderer *renderer;
     public:
         inline Window(const std::string &title, int width, int height)
                 : title(title), width(width), height(height) {}

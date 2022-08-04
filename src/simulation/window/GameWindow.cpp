@@ -41,7 +41,6 @@ void GameWindow::Init() {
 
 
     renderer = SDL_CreateRenderer(window, 0, 0);
-    LOG("Just to make sure that Renderer initialize with Direct3D11 backend");
 
     if (renderer) {
         LOG("Renderer is Created Successfully");
@@ -74,6 +73,7 @@ void GameWindow::HandleInput() {
         switch (event.type) {
             case SDL_QUIT:
                 LOG("Event:Quit");
+                exit(0);
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 LOG("Event:MouseButtonDown");

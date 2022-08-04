@@ -12,7 +12,9 @@ void Renderer::Reset() {}
 
 void Renderer::Present() {}
 
-void Renderer::DrawLine(const Vec2 &v1, const Vec2 &v2) {}
+void Renderer::DrawLine(const Vec2 &v1, const Vec2 &v2) {
+
+}
 
 void Renderer::Scale(double s) {}
 
@@ -28,4 +30,14 @@ void Renderer::Rotate(double t) {
     this->rotation += t;
 }
 
-void Renderer::Render(const Image &image) {}
+void Renderer::SetColor(Color color) {
+    this->color = color;
+}
+
+void Renderer::DrawImage(const Image &image) {}
+
+void Renderer::DrawShape(const interface::gfx::Shape &shape) {}
+
+void Renderer::BeginFrame() {
+
+}

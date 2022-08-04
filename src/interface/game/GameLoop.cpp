@@ -52,7 +52,8 @@ void GameLoop::Go() {
 
 void GameLoop::Render() {}
 
-void GameLoop::Update() {}
+void GameLoop::Update() {
+}
 
 void GameLoop::Init() {
 
@@ -71,4 +72,8 @@ void GameLoop::Enable() {
 
 void GameLoop::Disable() {
     this->isRunning = false;
+}
+
+void GameLoop::SendEvent(const interface::io::Event &event) {
+
 }

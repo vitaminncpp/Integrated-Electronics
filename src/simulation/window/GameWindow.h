@@ -17,6 +17,10 @@ namespace simulation::window {
             Init();
         }
 
+        inline SDL_Renderer *GetRenderer() {
+            return renderer;
+        }
+
         ~GameWindow() override;
 
         void Init() override;

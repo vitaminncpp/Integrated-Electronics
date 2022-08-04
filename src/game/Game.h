@@ -7,14 +7,16 @@ namespace game {
 
     class Game : public interface::game::GameLoop {
     private:
-
+        lib::math::Vec2 p1;
+        lib::math::Vec2 p2;
     public:
-        inline explicit Game(interface::window::Window *window) : GameLoop(window) {
+        inline explicit Game(interface::window::Window *window)
+                : GameLoop(window), p1(1, 2), p2(100, 30) {
             Init();
+
         }
 
-        inline ~Game() {
-        }
+        ~Game() override;
 
         void Update() override;
 

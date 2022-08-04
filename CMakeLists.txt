@@ -29,7 +29,7 @@ add_executable(Simulation
         src/core/components/Component.h
         src/simulation/gfx/SDL_Context.cpp
         src/simulation/gfx/SDL_Context.h
-        src/interface/gfx/Color.h)
+        src/interface/gfx/Color.h src/interface/gfx/Shape.cpp src/interface/gfx/Shape.h)
 
 
-target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2::SDL2-static)
+target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main)

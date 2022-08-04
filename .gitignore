@@ -5,6 +5,7 @@ cmake-build-release/
 [Dd]ebug/
 [Bb]in/
 
+win/
 
 
 *.o

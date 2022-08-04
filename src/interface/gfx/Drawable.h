@@ -9,9 +9,12 @@ namespace interface::gfx {
     class Drawable {
     protected:
         interface::gfx::Renderer *renderer = nullptr;
+        lib::math::Vec2 translate;
+        lib::math::Vec2 scale;
+        double rotation = 0;
     public:
         inline explicit Drawable(interface::gfx::Renderer *renderer)
-                : renderer(renderer) {};
+                : renderer(renderer), translate(0, 0), scale(1, 1), rotation(0) {};
 
         virtual ~Drawable();
 
