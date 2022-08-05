@@ -6,6 +6,7 @@ cmake-build-release/
 [Bb]in/
 
 win/
+third-party/
 
 
 *.o

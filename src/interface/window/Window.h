@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 #include "../io/InputBridge.h"
 #include "../gfx/Renderer.h"
@@ -11,8 +12,8 @@ namespace interface::window {
         int height;
         int width;
         std::string title;
-        const interface::io::InputBridge *input;
-        interface::gfx::Renderer *renderer;
+        std::shared_ptr<interface::io::InputBridge> input;
+        std::shared_ptr<interface::gfx::Renderer> renderer;
     public:
         inline Window(const std::string &title, int width, int height)
                 : title(title), width(width), height(height) {}
@@ -44,7 +45,7 @@ namespace interface::window {
             this->title = title;
         }
 
-        inline void SetInputBridge(const interface::io::InputBridge *input) {
+        inline void SetInputBridge(const std::shared_ptr<interface::io::InputBridge> &input) {
             this->input = input;
         }
 

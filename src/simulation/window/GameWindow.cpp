@@ -5,6 +5,9 @@
 using namespace simulation::window;
 
 GameWindow::~GameWindow() {
+    if (renderer) {
+        SDL_DestroyRenderer(renderer);
+    }
     if (window != nullptr) {
         SDL_DestroyWindow(window);
     }

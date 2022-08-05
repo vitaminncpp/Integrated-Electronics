@@ -29,7 +29,7 @@ add_executable(Simulation
         src/core/components/Component.h
         src/simulation/gfx/SDL_Context.cpp
         src/simulation/gfx/SDL_Context.h
-        src/interface/gfx/Color.h src/interface/gfx/Shape.cpp src/interface/gfx/Shape.h)
+        src/interface/gfx/Color.h src/interface/gfx/Shape.cpp src/interface/gfx/Shape.h src/core/components/Wire.cpp src/core/components/Wire.h src/core/components/AND.cpp src/core/components/AND.h src/core/components/OR.cpp src/core/components/OR.h src/core/components/NOT.cpp src/core/components/NOT.h src/core/components/XOR.cpp src/core/components/XOR.h src/core/components/XNOR.cpp src/core/components/XNOR.h)
 
 
 target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main)
