@@ -3,6 +3,8 @@
 #include "../util/util.h"
 
 using namespace game;
+using namespace interface::io;
+
 
 Game::~Game() {}
 
@@ -43,6 +45,20 @@ void Game::Disable() {
     GameLoop::Disable();
 }
 
-void Game::SendEvent(const interface::io::Event &event) {
+void Game::SendEvent(interface::io::Event *event) {
     GameLoop::SendEvent(event);
+    switch (event->GetType()) {
+        case EVENT_TYPE_MOUSE:
+            switch (event->GetFlag()) {
+                case FLAG_MOUSE_MOVED:
+                    renderer->Translate(lib::math::Vec2(dynamic_cast<MouseEvent *>(event)->GetX(),
+                                                        dynamic_cast<MouseEvent *>(event)->GetY()));
+                    break;
+                default:
+                    break;
+            }
+            break;
+        default:
+            break;
+    }
 }

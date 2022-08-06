@@ -22,7 +22,9 @@ void SDL_Context::Reset() {
 
 void SDL_Context::DrawLine(const Vec2 &v1, const Vec2 &v2) {
     Renderer::DrawLine(v1, v2);
-    SDL_RenderDrawLine(this->GetSDL_Renderer(), v1.GetX(), v1.GetY(), v2.GetX(), v2.GetY());
+    SDL_RenderDrawLine(this->GetSDL_Renderer(),
+                       v1.GetX() + translate.GetX(), v1.GetY() + translate.GetY(),
+                       v2.GetX() + translate.GetX(), v2.GetY() + translate.GetY());
 }
 
 void SDL_Context::Scale(double s) {
@@ -63,6 +65,7 @@ void SDL_Context::Present() {
 
 void SDL_Context::DrawRect(int x, int y, int w, int h) {
     Renderer::DrawRect(x, y, w, h);
-    SDL_Rect rect = {x, y, w * 10, h * 10};
+    SDL_Rect rect = {x + static_cast<int>(translate.GetX()), y + static_cast<int>( translate.GetY()),
+                     w, h};
     SDL_RenderFillRect(this->renderer, &rect);
 }

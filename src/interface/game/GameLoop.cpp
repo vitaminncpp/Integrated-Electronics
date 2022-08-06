@@ -5,6 +5,7 @@
 #include "../../util/util.h"
 
 using namespace interface::game;
+using namespace interface::io;
 
 GameLoop::~GameLoop() {}
 
@@ -77,6 +78,6 @@ void GameLoop::Disable() {
     this->isRunning = false;
 }
 
-void GameLoop::SendEvent(const interface::io::Event &event) {
+void GameLoop::SendEvent(Event *event) {
 
 }

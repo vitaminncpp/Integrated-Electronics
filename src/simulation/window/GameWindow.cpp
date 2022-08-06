@@ -3,6 +3,7 @@
 #include "GameWindow.h"
 
 using namespace simulation::window;
+using namespace interface::io;
 
 GameWindow::~GameWindow() {
     if (renderer) {
@@ -74,9 +75,13 @@ void GameWindow::HandleInput() {
     int mouseY;
 
     while (SDL_PollEvent(&event)) {
+        Event *toBeSent = nullptr;
         switch (event.type) {
             case SDL_QUIT:
                 LOG("Event:Quit");
+                if (toBeSent) {
+                    delete toBeSent;
+                }
                 exit(0);
                 break;
             case SDL_MOUSEBUTTONDOWN:
@@ -95,11 +100,16 @@ void GameWindow::HandleInput() {
                 LOG("Event:MouseWheel");
                 break;
             case SDL_MOUSEMOTION:
+                toBeSent = new MouseEvent(event.motion.xrel, event.motion.yrel, FLAG_MOUSE_MOVED);
+                input->SendEvent(toBeSent);
                 LOG("Event:MouseMotion");
                 break;
             default:
                 LOG("Event:Invalid");
                 break;
+        }
+        if (toBeSent) {
+            delete toBeSent;
         }
     }
 }

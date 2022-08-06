@@ -34,7 +34,7 @@ void Simulation::Render() {
 }
 
 void Simulation::DrawGrid() {
-    this->renderer->SetColor(Color(255, 255, 255, 100));
+    this->renderer->SetColor(Color(255, 255, 255, 255));
     for (int i = 0; i < 10000; i += 20) {
         for (int j = 0; j < 10000; j += 20) {
             this->renderer->DrawRect(i, j, 1, 1);
