@@ -48,6 +48,7 @@ void GameWindow::Init() {
     if (renderer) {
         LOG("Renderer is Created Successfully");
     }
+    SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
 }
 
 void GameWindow::BeginFrame() {
