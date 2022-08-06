@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <SDL2/SDL_render.h>
 #include "../../interface/gfx/Renderer.h"
 #include "SDL_Image.h"

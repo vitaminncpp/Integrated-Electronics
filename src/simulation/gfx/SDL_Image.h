@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include <string>
 #include <SDL_render.h>
 #include <SDL_image.h>
@@ -17,7 +18,8 @@ namespace simulation::gfx {
         SDL_Rect rect{};
 
     public:
-        explicit SDL_Image(SDL_Renderer *renderer, const lib::math::Vec2 &pos, const lib::math::Vec2 &size,
+        explicit SDL_Image(SDL_Renderer *renderer, const lib::math::Vec2 &pos,
+                           const lib::math::Vec2 &size,
                            std::string &imagePath);
 
         ~SDL_Image() override;

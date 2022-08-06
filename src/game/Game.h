@@ -10,7 +10,7 @@ namespace game {
         lib::math::Vec2 p1;
         lib::math::Vec2 p2;
     public:
-        inline explicit Game(const std::shared_ptr<interface::window::Window> &window)
+        inline explicit Game(interface::window::Window *window)
                 : GameLoop(window), p1(1, 2), p2(100, 30) {
             Init();
 

@@ -12,8 +12,8 @@ namespace interface::window {
         int height;
         int width;
         std::string title;
-        std::shared_ptr<interface::io::InputBridge> input;
-        std::shared_ptr<interface::gfx::Renderer> renderer;
+        interface::io::InputBridge *input;
+        interface::gfx::Renderer *renderer;
     public:
         inline Window(const std::string &title, int width, int height)
                 : title(title), width(width), height(height) {}
@@ -45,7 +45,7 @@ namespace interface::window {
             this->title = title;
         }
 
-        inline void SetInputBridge(const std::shared_ptr<interface::io::InputBridge> &input) {
+        inline void SetInputBridge(interface::io::InputBridge *input) {
             this->input = input;
         }
 
