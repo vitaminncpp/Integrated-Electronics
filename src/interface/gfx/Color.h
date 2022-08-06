@@ -8,7 +8,7 @@ namespace interface::gfx {
         int b;
         int a;
     public:
-        inline explicit Color(int r, int g, int b)
+        inline Color(int r, int g, int b)
                 : r(r), g(g), b(b), a(255) {
 
         }
@@ -17,7 +17,7 @@ namespace interface::gfx {
                 : r(r), g(r), b(r), a(255) {
         }
 
-        inline explicit Color(int r, int g, int b, int a)
+        inline Color(int r, int g, int b, int a)
                 : r(r), g(g), b(b), a(a) {
 
         }

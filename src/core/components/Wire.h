@@ -10,6 +10,7 @@ namespace core::components {
         core::components::Component *input;
         core::components::Component *output;
         std::vector<lib::math::Vec2> path;
+        int length;
     public:
         Wire(interface::gfx::Renderer *renderer, const lib::math::Vec2 &start, const lib::math::Vec2 &end)
                 : core::components::Component(renderer, start, end) {}
