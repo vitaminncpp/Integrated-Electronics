@@ -14,18 +14,21 @@ void Game::Init() {
     GameLoop::Init();
 }
 
+void Game::SetRenderer(interface::gfx::Renderer *renderer) {
+    GameLoop::SetRenderer(renderer);
+    simulation.SetRenderer(renderer);
+}
+
 void Game::Render() {
     GameLoop::Render();
     renderer->BeginFrame();
-    renderer->SetColor(255);
-    renderer->DrawLine(p1, p2);
+    simulation.Render();
     renderer->Present();
 }
 
 void Game::Update() {
     GameLoop::Update();
-    p1 += 1;
-    p2 -= 1;
+    simulation.Update();
 }
 
 void Game::Reset() {

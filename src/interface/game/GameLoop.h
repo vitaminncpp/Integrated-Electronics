@@ -21,8 +21,10 @@ namespace interface::game {
             return this->window;
         }
 
-        inline void SetRenderer(interface::gfx::Renderer *renderer) {
-            this->renderer = renderer;
+        virtual void SetRenderer(interface::gfx::Renderer *renderer);
+
+        inline gfx::Renderer *GetRenderer() const {
+            return this->renderer;
         }
 
         inline bool IsRunning() const {

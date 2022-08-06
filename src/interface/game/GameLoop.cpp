@@ -59,6 +59,9 @@ void GameLoop::Init() {
 
 }
 
+void GameLoop::SetRenderer(interface::gfx::Renderer *renderer) {
+    this->renderer = renderer;
+}
 
 void GameLoop::Reset() {}
 

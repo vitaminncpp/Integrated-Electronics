@@ -42,8 +42,11 @@ namespace simulation::gfx {
 
         void DrawShape(const interface::gfx::Shape &shape) override;
 
+        virtual void DrawRect(int x1, int y1, int x2, int y2) override;
+
         void SetColor(interface::gfx::Color color) override;
 
         void BeginFrame() override;
+
     };
 }

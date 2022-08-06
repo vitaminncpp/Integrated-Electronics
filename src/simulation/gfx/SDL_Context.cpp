@@ -60,3 +60,9 @@ void SDL_Context::Present() {
     Renderer::Present();
     SDL_RenderPresent(renderer);
 }
+
+void SDL_Context::DrawRect(int x, int y, int w, int h) {
+    Renderer::DrawRect(x, y, w, h);
+    SDL_Rect rect = {x, y, w, h};
+    SDL_RenderDrawRect(this->renderer, &rect);
+}

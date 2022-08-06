@@ -43,5 +43,8 @@ namespace interface::gfx {
 
         virtual void DrawShape(const Shape &shape);
 
+        virtual void DrawPoint(int i, int i1);
+
+        virtual void DrawRect(int x1, int y1, int x2, int y2);
     };
 }

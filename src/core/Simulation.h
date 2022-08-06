@@ -9,9 +9,9 @@ namespace core {
     class Simulation {
     private:
         interface::gfx::Renderer *renderer;
-        std::vector<std::shared_ptr<core::components::Component>> components;
+        std::vector<core::components::Component *> components;
         int count = 0;
-        std::shared_ptr<components::Component> current;
+        components::Component *current = nullptr;
 
         int clock = 0;
 
@@ -19,6 +19,8 @@ namespace core {
         Simulation(interface::gfx::Renderer *renderer);
 
         inline int GetComponentCount() { return count; }
+
+        inline void SetRenderer(interface::gfx::Renderer *renderer) { this->renderer = renderer; }
 
         ~Simulation();
 
@@ -28,5 +30,7 @@ namespace core {
         void Render();
 
         void Clock();
+
+        void DrawGrid();
     };
 }

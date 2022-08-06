@@ -7,8 +7,8 @@
 namespace core::components {
     class Wire : public core::components::Component {
     private:
-        std::shared_ptr<core::components::Component> input;
-        std::shared_ptr<core::components::Component> output;
+        core::components::Component *input;
+        core::components::Component *output;
         std::vector<lib::math::Vec2> path;
     public:
         Wire(interface::gfx::Renderer *renderer, const lib::math::Vec2 &start, const lib::math::Vec2 &end)

@@ -1,22 +1,23 @@
 #pragma once
 
 #include "../interface/game/GameLoop.h"
-
+#include "../core/Simulation.h"
 
 namespace game {
 
     class Game : public interface::game::GameLoop {
     private:
-        lib::math::Vec2 p1;
-        lib::math::Vec2 p2;
+        core::Simulation simulation;
     public:
         inline explicit Game(interface::window::Window *window)
-                : GameLoop(window), p1(1, 2), p2(100, 30) {
+                : GameLoop(window), simulation(nullptr) {
             Init();
-
+            simulation.SetRenderer(GetRenderer());
         }
 
         ~Game() override;
+
+        void SetRenderer(interface::gfx::Renderer *renderer) override;
 
         void Update() override;
 

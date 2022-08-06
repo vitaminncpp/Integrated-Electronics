@@ -41,3 +41,11 @@ void Renderer::DrawShape(const interface::gfx::Shape &shape) {}
 void Renderer::BeginFrame() {
 
 }
+
+void Renderer::DrawPoint(int i, int i1) {
+
+}
+
+void Renderer::DrawRect(int x1, int y1, int x2, int y2) {
+
+}
