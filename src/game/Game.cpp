@@ -4,6 +4,7 @@
 
 using namespace game;
 using namespace interface::io;
+using namespace lib::math;
 
 
 Game::~Game() {}
@@ -50,9 +51,26 @@ void Game::SendEvent(const interface::io::Event &event) {
     switch (event.GetType()) {
         case EVENT_TYPE_MOUSE:
             switch (event.GetFlag()) {
+                case FLAG_MOUSE_L_DOWN:
+                    state.SetState(ENABLE_TRANSLATION);
+                    break;
+                case FLAG_MOUSE_L_UP:
+                    state.SetState(NORMAL_STATE);
+                    break;
+
+                case FLAG_MOUSE_R_DOWN:
+                    break;
+                case FLAG_MOUSE_R_UP:
+                    break;
                 case FLAG_MOUSE_MOVED:
-                    renderer->Translate(
-                            lib::math::Vec2(((Event) event).GetData().mouse.y, ((Event) event).GetData().mouse.y));
+                    switch (state.GetState()) {
+                        case ENABLE_TRANSLATION:
+                            renderer->Translate(Vec2(event.GetData().mouse.x, event.GetData().mouse.y));
+                            break;
+                        default:
+                            break;
+                    }
+
                     break;
                 default:
                     break;

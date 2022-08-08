@@ -77,7 +77,6 @@ void GameWindow::HandleInput() {
         switch (event.type) {
             case SDL_QUIT:
                 LOG("Event:Quit");
-                toBeSent.Reset();
                 toBeSent.SetFlag(EVENT_TYPE_QUIT);
                 /**Scope to add return type for getting feedback from Game Object*/
                 this->input->SendEvent(toBeSent);
@@ -85,9 +84,27 @@ void GameWindow::HandleInput() {
                 break;
             case SDL_MOUSEBUTTONDOWN:
                 LOG("Event:MouseButtonDown");
+                toBeSent.SetType(EVENT_TYPE_MOUSE);
+                if (event.button.button == SDL_BUTTON_LEFT) {
+                    toBeSent.SetFlag(FLAG_MOUSE_L_DOWN);
+                } else if (event.button.button == SDL_BUTTON_RIGHT) {
+                    toBeSent.SetFlag(FLAG_MOUSE_R_DOWN);
+                } else {
+                }
+                toBeSent.SetData(
+                        {.mouse={.x=static_cast<short>(event.motion.x), .y=static_cast<short>(event.motion.y)}});
                 break;
             case SDL_MOUSEBUTTONUP:
                 LOG("Event:MouseButtonUp");
+                toBeSent.SetType(EVENT_TYPE_MOUSE);
+                if (event.button.button == SDL_BUTTON_LEFT) {
+                    toBeSent.SetFlag(FLAG_MOUSE_L_UP);
+                } else if (event.button.button == SDL_BUTTON_RIGHT) {
+                    toBeSent.SetFlag(FLAG_MOUSE_R_UP);
+                } else {
+                }
+                toBeSent.SetData(
+                        {.mouse={.x=static_cast<short>(event.motion.x), .y=static_cast<short>(event.motion.y)}});
                 break;
             case SDL_KEYDOWN:
                 LOG("Event:KeyDown");
@@ -99,9 +116,11 @@ void GameWindow::HandleInput() {
                 LOG("Event:MouseWheel");
                 break;
             case SDL_MOUSEMOTION:
-
-                input->SendEvent(toBeSent);
                 LOG("Event:MouseMotion");
+                toBeSent.SetType(EVENT_TYPE_MOUSE);
+                toBeSent.SetFlag(FLAG_MOUSE_MOVED);
+                toBeSent.SetData(
+                        {.mouse={.x=static_cast<short>(event.motion.xrel), .y=static_cast<short>(event.motion.yrel)}});
                 break;
             default:
                 LOG("Event:Invalid");

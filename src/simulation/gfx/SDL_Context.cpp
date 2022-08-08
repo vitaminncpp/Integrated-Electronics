@@ -54,7 +54,7 @@ void SDL_Context::SetColor(interface::gfx::Color color) {
 
 void SDL_Context::BeginFrame() {
     Renderer::BeginFrame();
-    SetColor(255);
+    SetColor(0);
     SDL_RenderClear(this->renderer);
 }
 

@@ -52,11 +52,15 @@ namespace interface ::io {
             return this->type;
         }
 
+        inline void SetType(int type) {
+            this->type = type;
+        }
+
         inline unsigned int GetFlag() const {
             return this->flag;
         }
 
-        inline EventData &GetData() {
+        inline const EventData &GetData() const {
             return this->data;
         }
 

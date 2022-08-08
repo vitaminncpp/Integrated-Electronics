@@ -1,5 +1,9 @@
 #pragma once
 
+#define NORMAL_STATE 0
+#define ENABLE_TRANSLATION 10
+#define DISABLE_TRANSLATION 11
+
 namespace game {
     class State {
         struct KeyState {
@@ -31,7 +35,9 @@ namespace game {
 
 
     public:
-        inline State() = default;
+        inline State() {
+            Reset();
+        };
 
         inline  ~State() = default;
 
@@ -90,6 +96,38 @@ namespace game {
 
         inline void SetMouseStateNext(const MouseState &mouseState) {
             this->mouseStateNext = mouseState;
+        }
+
+        void Reset() {
+            state = -1;
+            statePrev = -1;
+            stateNext = -1;
+
+            keyState.keyCode = -1;
+            keyState.keyFlags = 0;
+            keyStatePrev.keyCode = -1;
+            keyStatePrev.keyFlags = 0;
+            keyStateNext.keyCode = -1;
+            keyStateNext.keyFlags = 0;
+
+
+            mouseState.mouseButton = -1;
+            mouseState.mouseX = 0;
+            mouseState.mouseX = 0;
+            mouseState.mouseWheel = 0;
+            mouseState.mouseFlags = 0;
+
+            mouseStatePrev.mouseButton = -1;
+            mouseStatePrev.mouseX = 0;
+            mouseStatePrev.mouseX = 0;
+            mouseStatePrev.mouseWheel = 0;
+            mouseStatePrev.mouseFlags = 0;
+
+            mouseStateNext.mouseButton = -1;
+            mouseStateNext.mouseX = 0;
+            mouseStateNext.mouseX = 0;
+            mouseStateNext.mouseWheel = 0;
+            mouseStateNext.mouseFlags = 0;
         }
     };
 }
