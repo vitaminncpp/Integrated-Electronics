@@ -45,14 +45,14 @@ void Game::Disable() {
     GameLoop::Disable();
 }
 
-void Game::SendEvent(interface::io::Event *event) {
+void Game::SendEvent(const interface::io::Event &event) {
     GameLoop::SendEvent(event);
-    switch (event->GetType()) {
+    switch (event.GetType()) {
         case EVENT_TYPE_MOUSE:
-            switch (event->GetFlag()) {
+            switch (event.GetFlag()) {
                 case FLAG_MOUSE_MOVED:
-                    renderer->Translate(lib::math::Vec2(dynamic_cast<MouseEvent *>(event)->GetX(),
-                                                        dynamic_cast<MouseEvent *>(event)->GetY()));
+                    renderer->Translate(
+                            lib::math::Vec2(((Event) event).GetData().mouse.y, ((Event) event).GetData().mouse.y));
                     break;
                 default:
                     break;

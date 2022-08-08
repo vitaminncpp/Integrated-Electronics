@@ -71,17 +71,16 @@ void GameWindow::Render() {
 void GameWindow::HandleInput() {
     Window::HandleInput();
     SDL_Event event;
-    int mouseX;
-    int mouseY;
-
+    Event toBeSent;
     while (SDL_PollEvent(&event)) {
-        Event *toBeSent = nullptr;
+        toBeSent.Reset();
         switch (event.type) {
             case SDL_QUIT:
                 LOG("Event:Quit");
-                if (toBeSent) {
-                    delete toBeSent;
-                }
+                toBeSent.Reset();
+                toBeSent.SetFlag(EVENT_TYPE_QUIT);
+                /**Scope to add return type for getting feedback from Game Object*/
+                this->input->SendEvent(toBeSent);
                 exit(0);
                 break;
             case SDL_MOUSEBUTTONDOWN:
@@ -100,7 +99,7 @@ void GameWindow::HandleInput() {
                 LOG("Event:MouseWheel");
                 break;
             case SDL_MOUSEMOTION:
-                toBeSent = new MouseEvent(event.motion.xrel, event.motion.yrel, FLAG_MOUSE_MOVED);
+
                 input->SendEvent(toBeSent);
                 LOG("Event:MouseMotion");
                 break;
@@ -108,8 +107,6 @@ void GameWindow::HandleInput() {
                 LOG("Event:Invalid");
                 break;
         }
-        if (toBeSent) {
-            delete toBeSent;
-        }
+        this->input->SendEvent(toBeSent);
     }
 }

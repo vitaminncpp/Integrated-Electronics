@@ -50,7 +50,7 @@ namespace interface::game {
 
         virtual void Disable();
 
-        void SendEvent(interface::io::Event *event) override;
+        void SendEvent(const interface::io::Event &event) override;
 
     };
 }

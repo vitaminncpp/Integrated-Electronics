@@ -11,7 +11,7 @@ namespace interface {
             inline virtual ~InputBridge() {}
 
         public:
-            virtual void SendEvent(Event *event) = 0;
+            virtual void SendEvent(const Event &event) = 0;
         };
     }
 }

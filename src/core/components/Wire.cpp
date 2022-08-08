@@ -8,10 +8,17 @@ Wire::~Wire() {
 }
 
 void Wire::Render() {
-    renderer->SetColor(255);
-    renderer->DrawLine(path[0], path[length]);
+    renderer->SetColor(0);
+    for (int i = 0; i < length; i++) {
+        renderer->DrawLine(path[i], path[i + 1]);
+    }
 }
 
 void Wire::Update() {
 
+}
+
+void Wire::AddPath(const lib::math::Vec2 &v) {
+    path.push_back(v);
+    length++;
 }

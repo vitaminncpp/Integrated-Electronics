@@ -3,6 +3,8 @@
 #define EVENT_TYPE_MOUSE 11
 #define EVENT_TYPE_WHEEL 12
 
+#define EVENT_TYPE_QUIT 13
+
 #define FLAG_KEY_UP 1
 #define FLAG_KEY_DOWN 2
 #define FLAG_KEY_TYPED 4
@@ -17,93 +19,58 @@
 namespace interface ::io {
 
     class Event {
+        union EventData {
+            int keyCode;
+            struct {
+                short x;
+                short y;
+            } mouse;
+            int wheelDelta;
+        };
     private:
-        const int type;
-        unsigned const int flag;
+        int type;
+        unsigned int flag;
+        EventData data;
     public:
+        inline explicit Event() = default;
+
         inline explicit Event(int type, unsigned const int flag)
                 : type(type), flag(flag) {
         }
 
-        virtual ~Event() = default;
+        ~Event() = default;
 
     public:
-        inline const int GetType() const {
+
+        inline void Reset() {
+            this->type = -1;
+            this->flag = 0;
+            this->data.keyCode = 0;
+        }
+
+        inline int GetType() const {
             return this->type;
         }
 
-        inline const unsigned int GetFlag() const {
+        inline unsigned int GetFlag() const {
             return this->flag;
         }
 
-    };
-
-    class KeyEvent : public Event {
-    private:
-        const int keyCode;
-
-    public:
-        inline explicit KeyEvent(int keyCode, int flag)
-                : Event(EVENT_TYPE_KEYBOARD, flag), keyCode(keyCode) {
-
+        inline EventData &GetData() {
+            return this->data;
         }
 
-        inline ~KeyEvent() override = default;
-
-        inline const int GetKeyCode() const {
-            return this->keyCode;
+        inline void SetFlag(unsigned int flag) {
+            this->flag |= flag;
         }
 
-        inline const unsigned int GetKeyEventType() const {
-            return this->GetFlag();
+        inline void SetData(EventData &data) {
+            this->data = data;
         }
 
-    };
-
-    class MouseEvent : public Event {
-    private:
-        const int x;
-        const int y;
-    public:
-        inline explicit MouseEvent(int x, int y, unsigned int flag)
-                : Event(EVENT_TYPE_MOUSE, flag), x(x), y(y) {
-
-        }
-
-        ~MouseEvent() override = default;
-
-    public:
-        inline const int GetX() const {
-            return this->x;
-        }
-
-        inline const int GetY() const {
-            return this->y;
-        }
-
-        inline const unsigned int GetMouseEventType() const {
-            return this->GetFlag();
-        }
-    };
-
-    class WheelEvent : public Event {
-    private:
-        const int delta;
-    public:
-        inline explicit WheelEvent(int delta, unsigned int flag)
-                : Event(EVENT_TYPE_WHEEL, flag), delta(delta) {
-
-        }
-
-        inline ~WheelEvent() override = default;
-
-        inline const int GetDelta() const {
-            return this->delta;
-        }
-
-        inline const unsigned int GetWheelEventType() const {
-            return this->GetFlag();
+        //Useless, but I don't want to remove it.
+        inline void SetData(EventData &&data) {
+            this->data = std::move(data);
         }
     };
 }
-

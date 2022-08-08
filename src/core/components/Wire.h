@@ -21,5 +21,7 @@ namespace core::components {
         void Render() override;
 
         void Update() override;
+
+        void AddPath(const lib::math::Vec2 &v);
     };
 }

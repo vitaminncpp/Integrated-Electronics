@@ -78,6 +78,6 @@ void GameLoop::Disable() {
     this->isRunning = false;
 }
 
-void GameLoop::SendEvent(Event *event) {
+void GameLoop::SendEvent(const Event &event) {
 
 }
