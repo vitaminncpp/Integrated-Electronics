@@ -5,6 +5,7 @@
 
 #define EVENT_TYPE_QUIT 13
 
+#define FLAG_NONE 0
 #define FLAG_KEY_UP 1
 #define FLAG_KEY_DOWN 2
 #define FLAG_KEY_TYPED 4
@@ -24,8 +25,8 @@ namespace interface ::io {
             struct {
                 short x;
                 short y;
+                short wheelDelta;
             } mouse;
-            int wheelDelta;
         };
     private:
         int type;

@@ -34,7 +34,7 @@ namespace simulation::gfx {
 
         void Scale(double s) override;
 
-        void Scale(const lib::math::Vec2 &s) override;
+        void Scale(const lib::math::Vec2 &center, double s) override;
 
         void Translate(const lib::math::Vec2 &d) override;
 

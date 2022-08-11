@@ -16,14 +16,12 @@ void Renderer::DrawLine(const Vec2 &v1, const Vec2 &v2) {
 
 }
 
-void Renderer::Scale(double s) {}
-
-void Renderer::Scale(const Vec2 &s) {
-    this->scale *= s;
+void Renderer::Scale(double s) {
+    this->fScale *= s;
 }
 
 void Renderer::Translate(const Vec2 &d) {
-    this->translate += d;
+    this->fTranslate += d;
 }
 
 void Renderer::Rotate(double t) {
@@ -47,5 +45,14 @@ void Renderer::DrawPoint(int i, int i1) {
 }
 
 void Renderer::DrawRect(int x1, int y1, int x2, int y2) {
+    pos.SetXY(x1, y1);
+    pos -= this->fScaleCenter;
+    pos *= this->fScale;
+    pos += this->fScaleCenter;
+    pos += this->fTranslate;
+}
 
+void Renderer::Scale(const Vec2 &center, double s) {
+    this->fScaleCenter = center;
+    this->fScale *= s;
 }

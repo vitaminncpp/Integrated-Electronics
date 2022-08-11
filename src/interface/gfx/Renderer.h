@@ -8,14 +8,16 @@ namespace interface::gfx {
 
     class Renderer {
     protected:
-        lib::math::Vec2 translate;
-        lib::math::Vec2 scale;
+        lib::math::Vec2 fTranslate;
+        lib::math::Vec2 fScale;
+        lib::math::Vec2 fScaleCenter;
+        lib::math::Vec2 pos;
         double rotation = 0;
         Color color;
 
     public:
         inline explicit Renderer() :
-                translate(0, 0), scale(1, 1), color(0) {};
+                fTranslate(0, 0), fScale(1, 1), color(0) {};
 
         virtual ~Renderer();
 
@@ -35,7 +37,7 @@ namespace interface::gfx {
 
         virtual void SetColor(Color color);
 
-        virtual void Scale(const lib::math::Vec2 &s);
+        virtual void Scale(const lib::math::Vec2 &center, double s);
 
         virtual void Translate(const lib::math::Vec2 &d);
 

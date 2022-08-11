@@ -76,6 +76,15 @@ void Game::SendEvent(const interface::io::Event &event) {
                     break;
             }
             break;
+        case EVENT_TYPE_WHEEL:
+            double s;
+            if (event.GetData().mouse.wheelDelta == 1) {
+                s = 1.05;
+            } else if (event.GetData().mouse.wheelDelta == -1) {
+                s = 1 / 1.05;
+            }
+            this->renderer->Scale(Vec2(event.GetData().mouse.x, event.GetData().mouse.y), s);
+            break;
         default:
             break;
     }

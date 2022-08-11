@@ -23,16 +23,16 @@ void SDL_Context::Reset() {
 void SDL_Context::DrawLine(const Vec2 &v1, const Vec2 &v2) {
     Renderer::DrawLine(v1, v2);
     SDL_RenderDrawLine(this->GetSDL_Renderer(),
-                       v1.GetX() + translate.GetX(), v1.GetY() + translate.GetY(),
-                       v2.GetX() + translate.GetX(), v2.GetY() + translate.GetY());
+                       v1.GetX() + fTranslate.GetX(), v1.GetY() + fTranslate.GetY(),
+                       v2.GetX() + fTranslate.GetX(), v2.GetY() + fTranslate.GetY());
 }
 
 void SDL_Context::Scale(double s) {
     Renderer::Scale(s);
 }
 
-void SDL_Context::Scale(const Vec2 &s) {
-    Renderer::Scale(s);
+void SDL_Context::Scale(const Vec2 &center, double s) {
+    Renderer::Scale(center, s);
 }
 
 void SDL_Context::Translate(const Vec2 &d) {
@@ -65,7 +65,8 @@ void SDL_Context::Present() {
 
 void SDL_Context::DrawRect(int x, int y, int w, int h) {
     Renderer::DrawRect(x, y, w, h);
-    SDL_Rect rect = {x + static_cast<int>(translate.GetX()), y + static_cast<int>( translate.GetY()),
-                     w, h};
+    SDL_Rect rect = {static_cast<int>(pos.GetX()),
+                     static_cast<int>(pos.GetY()),
+                     static_cast<int>(w * fScale.GetX()), static_cast<int>(h * fScale.GetY())};
     SDL_RenderFillRect(this->renderer, &rect);
 }
