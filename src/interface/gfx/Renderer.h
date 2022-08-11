@@ -48,5 +48,7 @@ namespace interface::gfx {
         virtual void DrawPoint(int i, int i1);
 
         virtual void DrawRect(int x1, int y1, int x2, int y2);
+
+        virtual void PrePoss(int x, int y);
     };
 }

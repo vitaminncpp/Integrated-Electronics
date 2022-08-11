@@ -70,3 +70,8 @@ void SDL_Context::DrawRect(int x, int y, int w, int h) {
                      static_cast<int>(w * fScale.GetX()), static_cast<int>(h * fScale.GetY())};
     SDL_RenderFillRect(this->renderer, &rect);
 }
+
+void SDL_Context::DrawPoint(int x, int y) {
+    Renderer::DrawPoint(x, y);
+    SDL_RenderDrawPoint(this->renderer, this->pos.GetX(), this->pos.GetY());
+}

@@ -40,19 +40,24 @@ void Renderer::BeginFrame() {
 
 }
 
-void Renderer::DrawPoint(int i, int i1) {
-
+void Renderer::DrawPoint(int x, int y) {
+    PrePoss(x, y);
 }
 
 void Renderer::DrawRect(int x1, int y1, int x2, int y2) {
-    pos.SetXY(x1, y1);
-    pos -= this->fScaleCenter;
-    pos *= this->fScale;
-    pos += this->fScaleCenter;
-    pos += this->fTranslate;
+    PrePoss(x1, y1);
 }
 
 void Renderer::Scale(const Vec2 &center, double s) {
-    this->fScaleCenter = center;
     this->fScale *= s;
+    this->fScaleCenter = center;
+}
+
+void Renderer::PrePoss(int x, int y) {
+    pos.SetXY(x, y);
+    pos -= this->fScaleCenter;
+    pos *= this->fScale;
+    pos += this->fScaleCenter;
+
+    pos += this->fTranslate;
 }

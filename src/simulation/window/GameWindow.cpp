@@ -77,14 +77,12 @@ void GameWindow::HandleInput() {
         toBeSent.Reset();
         switch (event.type) {
             case SDL_QUIT:
-                LOG("Event:Quit");
                 toBeSent.SetFlag(EVENT_TYPE_QUIT);
                 /**Scope to add return type for getting feedback from Game Object*/
                 this->input->SendEvent(toBeSent);
                 exit(0);
                 break;
             case SDL_MOUSEBUTTONDOWN:
-                LOG("Event:MouseButtonDown");
                 toBeSent.SetType(EVENT_TYPE_MOUSE);
                 if (event.button.button == SDL_BUTTON_LEFT) {
                     toBeSent.SetFlag(FLAG_MOUSE_L_DOWN);
@@ -95,7 +93,6 @@ void GameWindow::HandleInput() {
                         {.mouse={.x=static_cast<short>(event.motion.x), .y=static_cast<short>(event.motion.y), .wheelDelta=0}});
                 break;
             case SDL_MOUSEBUTTONUP:
-                LOG("Event:MouseButtonUp");
                 toBeSent.SetType(EVENT_TYPE_MOUSE);
                 if (event.button.button == SDL_BUTTON_LEFT) {
                     toBeSent.SetFlag(FLAG_MOUSE_L_UP);
@@ -107,10 +104,8 @@ void GameWindow::HandleInput() {
                         {.mouse={.x=static_cast<short>(event.motion.x), .y=static_cast<short>(event.motion.y), .wheelDelta=0}});
                 break;
             case SDL_KEYDOWN:
-                LOG("Event:KeyDown");
                 break;
             case SDL_KEYUP:
-                LOG("Event:KeyUp");
                 break;
             case SDL_MOUSEWHEEL:
                 SDL_GetMouseState(&x, &y);
@@ -118,18 +113,15 @@ void GameWindow::HandleInput() {
                 toBeSent.SetFlag(FLAG_NONE);
                 toBeSent.SetData(
                         {.mouse={.x=static_cast<short>(x), .y=static_cast<short>(y), .wheelDelta=static_cast<short>(event.wheel.y)}});
-                LOG("Event:MouseWheel");
-                LOG("WheelDelta : " + std::to_string(event.wheel.y));
+
                 break;
             case SDL_MOUSEMOTION:
-                LOG("Event:MouseMotion");
                 toBeSent.SetType(EVENT_TYPE_MOUSE);
                 toBeSent.SetFlag(FLAG_MOUSE_MOVED);
                 toBeSent.SetData(
                         {.mouse={.x=static_cast<short>(event.motion.xrel), .y=static_cast<short>(event.motion.yrel), .wheelDelta=0}});
                 break;
             default:
-                LOG("Event:Invalid");
                 break;
         }
         this->input->SendEvent(toBeSent);

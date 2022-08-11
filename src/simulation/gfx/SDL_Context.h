@@ -48,5 +48,7 @@ namespace simulation::gfx {
 
         void BeginFrame() override;
 
+        void DrawPoint(int x, int y) override;
+
     };
 }

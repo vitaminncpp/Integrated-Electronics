@@ -1,13 +1,14 @@
 #pragma once
 
 #include "Component.h"
+#include "Wire.h"
 
 namespace core::components {
     class XNOR : public components::Component {
     private:
-        components::Component *input1;
-        components::Component *input2;
-        components::Component *output;
+        Wire *input1;
+        Wire *input2;
+        Wire *output;
     public:
         inline explicit XNOR(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos,
                              const lib::math::Vec2 &size)
