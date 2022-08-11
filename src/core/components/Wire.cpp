@@ -3,9 +3,6 @@
 using namespace core::components;
 using namespace interface::gfx;
 
-Wire::~Wire() {
-
-}
 
 void Wire::Render() {
     renderer->SetColor(0);
