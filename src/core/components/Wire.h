@@ -11,10 +11,17 @@ namespace core::components {
         core::components::Component *output;
         std::vector<lib::math::Vec2> path;
         bool value = false;
-        int length;
+        int length = 0;
     public:
-        Wire(interface::gfx::Renderer *renderer, const lib::math::Vec2 &start, const lib::math::Vec2 &end)
+        inline explicit Wire(interface::gfx::Renderer *renderer, const lib::math::Vec2 &start,
+                             const lib::math::Vec2 &end)
                 : core::components::Component(renderer, start, end) {}
+
+        inline explicit Wire(interface::gfx::Renderer *renderer)
+                : core::components::Component(renderer, lib::math::Vec2(0, 0), lib::math::Vec2(0, 0)) {}
+
+        inline explicit Wire(interface::gfx::Renderer *renderer, const lib::math::Vec2 &start)
+                : core::components::Component(renderer, start, lib::math::Vec2(0, 0)) {}
 
         inline ~Wire() override {
 

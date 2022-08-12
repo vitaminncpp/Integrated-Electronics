@@ -50,7 +50,7 @@ void Renderer::DrawRect(int x1, int y1, int x2, int y2) {
 
 void Renderer::Scale(const Vec2 &center, double s) {
     this->fScale *= s;
-    this->fScaleCenter = center;
+    this->fScaleCenter = center - this->fTranslate;
 }
 
 void Renderer::PrePoss(int x, int y) {
@@ -60,4 +60,17 @@ void Renderer::PrePoss(int x, int y) {
     pos += this->fScaleCenter;
 
     pos += this->fTranslate;
+}
+
+void Renderer::PrePoss(const Vec2 &pos) {
+    this->pos = pos;
+    this->pos -= this->fScaleCenter;
+    this->pos *= this->fScale;
+    this->pos += this->fScaleCenter;
+
+    this->pos += this->fTranslate;
+}
+
+void Renderer::DrawRect(const Vec2 &pos, const Vec2 &size) {
+    PrePoss(pos);
 }

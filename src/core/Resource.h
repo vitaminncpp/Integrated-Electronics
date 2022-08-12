@@ -1,39 +1,26 @@
 #pragma once
 
 #include "../interface/gfx/Image.h"
+#include "../interface/gfx/Renderer.h"
 
 namespace core::resources {
     class Resource {
-    private:
-        static interface::gfx::Image *andIcon;
-        static interface::gfx::Image *orIcon;
-        static interface::gfx::Image *notIcon;
-        static interface::gfx::Image *xorIcon;
-        static interface::gfx::Image *xnorIcon;
-        static interface::gfx::Image *dSourceIcon;
-        static interface::gfx::Image *dProbIcon;
-        static interface::gfx::Image *clkIcon;
-        static interface::gfx::Image *switchIcon;
+    protected:
+        interface::gfx::Renderer *renderer = nullptr;
+        interface::gfx::Image *andIcon = nullptr;
+        interface::gfx::Image *orIcon = nullptr;
+        interface::gfx::Image *notIcon = nullptr;
+        interface::gfx::Image *xorIcon = nullptr;
+        interface::gfx::Image *xnorIcon = nullptr;
+        interface::gfx::Image *dSourceIcon = nullptr;
+        interface::gfx::Image *dProbIcon = nullptr;
+        interface::gfx::Image *clkIcon = nullptr;
+        interface::gfx::Image *switchIcon = nullptr;
 
     public:
-        static void SetAndIcon(interface::gfx::Image *image);
+        inline explicit Resource(interface::gfx::Renderer *renderer)
+                : renderer(renderer) {}
 
-        static void SetOrIcon(interface::gfx::Image *image);
-
-        static void SetNotIcon(interface::gfx::Image *image);
-
-        static void SetXorIcon(interface::gfx::Image *image);
-
-        static void SetXnorIcon(interface::gfx::Image *image);
-
-        static void SetIcon(interface::gfx::Image *image);
-
-        static void SetDSourceIcon(interface::gfx::Image *image);
-
-        static void SetDProbecon(interface::gfx::Image *image);
-
-        static void SetSwitchIcon(interface::gfx::Image *image);
-
-        static void SetClkIcon(interface::gfx::Image *image);
+        virtual ~Resource();
     };
 }

@@ -7,22 +7,23 @@
 #include <stdexcept>
 #include "../../interface/gfx/Image.h"
 #include "../../lib/math/Vec2.h"
+#include "SDL_Context.h"
 
 
 namespace simulation::gfx {
 
     class SDL_Image : public interface::gfx::Image {
     private:
-        SDL_Renderer *renderer;
         SDL_Texture *texture;
         SDL_Rect rect{};
 
     public:
-        explicit SDL_Image(SDL_Renderer *renderer, const lib::math::Vec2 &pos,
+        explicit SDL_Image(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos,
                            const lib::math::Vec2 &size,
                            std::string &imagePath);
 
-        ~SDL_Image() override;
+        explicit SDL_Image(interface::gfx::Renderer *renderer, const std::string &path);
 
+        ~SDL_Image() override;
     };
 }

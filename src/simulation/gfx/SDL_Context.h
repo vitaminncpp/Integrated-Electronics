@@ -10,7 +10,7 @@ namespace simulation::gfx {
 
     class SDL_Context : public interface::gfx::Renderer {
     private:
-        SDL_Renderer *renderer;
+        SDL_Renderer *renderer = nullptr;
     public:
         inline explicit SDL_Context(SDL_Renderer *renderer)
                 : renderer(renderer), Renderer() {
@@ -19,6 +19,7 @@ namespace simulation::gfx {
         inline SDL_Renderer *GetSDL_Renderer() const {
             return this->renderer;
         }
+
 
         ~SDL_Context();
 
@@ -43,6 +44,8 @@ namespace simulation::gfx {
         void DrawShape(const interface::gfx::Shape &shape) override;
 
         void DrawRect(int x1, int y1, int x2, int y2) override;
+
+        void DrawRect(const lib::math::Vec2 &pos, const lib::math::Vec2 &size) override;
 
         void SetColor(interface::gfx::Color color) override;
 

@@ -3,6 +3,9 @@
 #include <memory>
 #include <vector>
 #include "components/Component.h"
+#include "components/AND.h"
+#include "components/OR.h"
+#include "components/Wire.h"
 
 namespace core {
 
@@ -29,8 +32,8 @@ namespace core {
 
         void Render();
 
-        void Clock();
-
         void DrawGrid();
+
+        void TestCircuit();
     };
 }

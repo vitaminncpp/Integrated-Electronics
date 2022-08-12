@@ -10,8 +10,15 @@ using namespace core::components;
 Simulation::Simulation(Renderer *renderer)
         : renderer(renderer) {}
 
-Simulation::~Simulation() {
-
+Simulation::~Simulation() noexcept {
+    for (auto &component: components) {
+        if (component) {
+            delete component;
+        }
+    }
+    if (current) {
+        delete current;
+    }
 }
 
 void Simulation::Update() {
@@ -34,10 +41,14 @@ void Simulation::Render() {
 }
 
 void Simulation::DrawGrid() {
-    this->renderer->SetColor(255);
+    this->renderer->SetColor(0);
     for (int i = 0; i < 1000; i += 20) {
         for (int j = 0; j < 1000; j += 20) {
-            this->renderer->DrawPoint(i, j);
+            this->renderer->DrawRect(i - 1, j - 1, 3, 3);
         }
     }
+}
+
+void Simulation::TestCircuit() {
+    Component *wire1 = new Wire(renderer);
 }

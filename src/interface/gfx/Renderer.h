@@ -49,6 +49,13 @@ namespace interface::gfx {
 
         virtual void DrawRect(int x1, int y1, int x2, int y2);
 
-        virtual void PrePoss(int x, int y);
+        virtual void DrawRect(const lib::math::Vec2 &pos, const lib::math::Vec2 &size);
+
+
+    private:
+
+        void PrePoss(const lib::math::Vec2 &pos);
+
+        void PrePoss(int x, int y);
     };
 }

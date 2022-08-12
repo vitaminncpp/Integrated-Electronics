@@ -12,7 +12,7 @@ void Wire::Render() {
 }
 
 void Wire::Update() {
-
+//IDK
 }
 
 void Wire::AddPath(const lib::math::Vec2 &v) {
