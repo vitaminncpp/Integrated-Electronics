@@ -40,6 +40,14 @@ namespace core::components {
             this->value = value;
         }
 
+        inline void SetStart(const lib::math::Vec2 &start) {
+            this->pos = start;
+        }
+
+        inline void SetEnd(const lib::math::Vec2 &end) {
+            this->size = end;
+        }
+
         void AddPath(const lib::math::Vec2 &v);
     };
 }

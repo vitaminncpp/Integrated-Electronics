@@ -5,10 +5,13 @@ using namespace interface::gfx;
 
 
 void Wire::Render() {
-    renderer->SetColor(0);
-    for (int i = 0; i < length; i++) {
-        renderer->DrawLine(path[i], path[i + 1]);
-    }
+    this->renderer->SetColor(this->value ? Color(0, 255, 0) : Color(255, 0, 0));
+    this->renderer->DrawLine(this->pos, this->size);
+
+//    renderer->SetColor(0);
+//    for (int i = 0; i < length; i++) {
+//        renderer->DrawLine(path[i], path[i + 1]);
+//    }
 }
 
 void Wire::Update() {

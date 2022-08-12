@@ -4,13 +4,17 @@
 
 using namespace core::components;
 
-Component::~Component() {}
+Component::~Component() {
+    if (this->image) {
+        delete image;
+    }
+}
 
 void Component::Update() {}
 
 void Component::Render() {
     Drawable::Render();
-    if (this->image != nullptr) {
+    if (this->image) {
         this->renderer->DrawImage(this->image, this->pos);
     }
 }

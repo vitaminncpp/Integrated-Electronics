@@ -62,6 +62,18 @@ void Simulation::TestCircuit() {
     andGate->SetInput2(input2);
     andGate->SetOutput(output);
 
+    input1->SetStart(Vec2(100, 100));
+    input1->SetEnd(Vec2(100, 200));
+
+    input2->SetStart(Vec2(150, 100));
+    input2->SetEnd(Vec2(150, 200));
+
+    output->SetStart(Vec2(200, 125));
+    output->SetEnd(Vec2(400, 125));
+
+    input1->SetValue(true);
+    input2->SetValue(true);
+
     components.push_back(andGate);
     components.push_back(input1);
     components.push_back(input2);

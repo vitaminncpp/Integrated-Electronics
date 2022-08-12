@@ -33,9 +33,12 @@ void SDL_Context::Reset() {
 
 void SDL_Context::DrawLine(const Vec2 &v1, const Vec2 &v2) {
     Renderer::DrawLine(v1, v2);
+    Vec2 end = v2 - v1;
+    end *= this->fScale;
+    end += this->pos;
     SDL_RenderDrawLine(this->GetSDL_Renderer(),
-                       v1.GetX() + fTranslate.GetX(), v1.GetY() + fTranslate.GetY(),
-                       v2.GetX() + fTranslate.GetX(), v2.GetY() + fTranslate.GetY());
+                       pos.GetX(), pos.GetY(),
+                       end.GetX(), end.GetY());
 }
 
 void SDL_Context::Scale(double s) {

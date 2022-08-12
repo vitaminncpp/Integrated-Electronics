@@ -13,7 +13,7 @@ void Renderer::Reset() {}
 void Renderer::Present() {}
 
 void Renderer::DrawLine(const Vec2 &v1, const Vec2 &v2) {
-
+    this->PrePoss(v1);
 }
 
 void Renderer::Scale(double s) {
