@@ -23,7 +23,11 @@ namespace simulation::gfx {
 
         ~SDL_Context();
 
-        void DrawImage(const interface::gfx::Image &image) override;
+        void DrawImage(interface::gfx::Image *image) override;
+
+        void DrawImage(interface::gfx::Image *image, const lib::math::Vec2 &pos) override;
+
+        void DrawImage(interface::gfx::Image *image, const lib::math::Vec2 &pos, const lib::math::Vec2 &size) override;
 
         void Init() override;
 
@@ -47,7 +51,7 @@ namespace simulation::gfx {
 
         void DrawRect(const lib::math::Vec2 &pos, const lib::math::Vec2 &size) override;
 
-        void SetColor(interface::gfx::Color color) override;
+        void SetColor(const interface::gfx::Color &color) override;
 
         void BeginFrame() override;
 

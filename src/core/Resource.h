@@ -7,20 +7,22 @@ namespace core::resources {
     class Resource {
     protected:
         interface::gfx::Renderer *renderer = nullptr;
-        interface::gfx::Image *andIcon = nullptr;
-        interface::gfx::Image *orIcon = nullptr;
-        interface::gfx::Image *notIcon = nullptr;
-        interface::gfx::Image *xorIcon = nullptr;
-        interface::gfx::Image *xnorIcon = nullptr;
-        interface::gfx::Image *dSourceIcon = nullptr;
-        interface::gfx::Image *dProbIcon = nullptr;
-        interface::gfx::Image *clkIcon = nullptr;
-        interface::gfx::Image *switchIcon = nullptr;
+        interface::gfx::Image *andImage = nullptr;
+        interface::gfx::Image *orImage = nullptr;
+        interface::gfx::Image *notImage = nullptr;
+        interface::gfx::Image *xorImage = nullptr;
+        interface::gfx::Image *xnorImage = nullptr;
+        interface::gfx::Image *dSrcImage = nullptr;
+        interface::gfx::Image *dProbImage = nullptr;
+        interface::gfx::Image *clkImage = nullptr;
+        interface::gfx::Image *switchImage = nullptr;
 
     public:
         inline explicit Resource(interface::gfx::Renderer *renderer)
                 : renderer(renderer) {}
 
         virtual ~Resource();
+
+        interface::gfx::Image *GetAndImage();
     };
 }

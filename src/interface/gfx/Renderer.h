@@ -29,13 +29,17 @@ namespace interface::gfx {
 
         virtual void Present();
 
-        virtual void DrawImage(const Image &image);
+        virtual void DrawImage(Image *image);
+
+        virtual void DrawImage(Image *image, const lib::math::Vec2 &pos);
+
+        virtual void DrawImage(Image *image, const lib::math::Vec2 &pos, const lib::math::Vec2 &size);
 
         virtual void DrawLine(const lib::math::Vec2 &v1, const lib::math::Vec2 &v2);
 
         virtual void Scale(double s);
 
-        virtual void SetColor(Color color);
+        virtual void SetColor(const Color &color);
 
         virtual void Scale(const lib::math::Vec2 &center, double s);
 

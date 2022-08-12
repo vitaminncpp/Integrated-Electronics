@@ -7,8 +7,8 @@ using namespace interface::gfx;
 using namespace simulation::gfx;
 
 
-SDL_Image::SDL_Image(Renderer *renderer, const Vec2 &pos, const Vec2 &size,
-                     std::string &imagePath) :
+SDL_Image::SDL_Image(Renderer *renderer, const std::string &imagePath, const Vec2 &pos, const Vec2 &size)
+        :
         Image(renderer, pos, size), texture(nullptr) {
 
     SDL_Surface *surface = SDL_LoadBMP(imagePath.c_str());

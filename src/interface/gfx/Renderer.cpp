@@ -28,11 +28,21 @@ void Renderer::Rotate(double t) {
     this->rotation += t;
 }
 
-void Renderer::SetColor(Color color) {
+void Renderer::SetColor(const Color &color) {
     this->color = color;
 }
 
-void Renderer::DrawImage(const Image &image) {}
+void Renderer::DrawImage(Image *image) {
+    PrePoss(image->GetPos());
+}
+
+void Renderer::DrawImage(Image *image, const Vec2 &pos) {
+    PrePoss(pos);
+}
+
+void Renderer::DrawImage(Image *image, const Vec2 &pos, const Vec2 &size) {
+    PrePoss(pos);
+}
 
 void Renderer::DrawShape(const interface::gfx::Shape &shape) {}
 

@@ -7,7 +7,7 @@ namespace core::components {
 
     class Component : public interface::gfx::Drawable {
     protected:
-
+        interface::gfx::Image *image = nullptr;
         lib::math::Vec2 pos;
         lib::math::Vec2 size;
     public:
@@ -23,6 +23,10 @@ namespace core::components {
         }
 
         ~Component() override;
+
+        inline void SetImage(interface::gfx::Image *image) {
+            this->image;
+        }
 
         void Render() override;
 

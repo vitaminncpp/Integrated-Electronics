@@ -6,10 +6,8 @@
 namespace simulation::core {
     class SDL_Resource : public ::core::resources::Resource {
     public:
-        inline explicit SDL_Resource(interface::gfx::Renderer *renderer)
-                : Resource(renderer) {
-            this->andIcon = new simulation::gfx::SDL_Image(renderer, "res/and.png");
-            this->orIcon = new simulation::gfx::SDL_Image(renderer, "res/or.png");
-        }
+        explicit SDL_Resource(interface::gfx::Renderer *renderer);
+
+        ~SDL_Resource() override;
     };
 }

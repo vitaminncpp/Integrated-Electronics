@@ -5,11 +5,25 @@ using namespace interface::gfx;
 using namespace lib::math;
 
 SDL_Context::~SDL_Context() {
+    
 }
 
-void SDL_Context::DrawImage(const Image &image) {
+void SDL_Context::DrawImage(interface::gfx::Image *image) {
     Renderer::DrawImage(image);
 }
+
+void SDL_Context::DrawImage(interface::gfx::Image *image, const Vec2 &pos) {
+    Renderer::DrawImage(image, pos);
+    SDL_Rect rect = {static_cast<int>(pos.GetX()), static_cast<int>(pos.GetY()),
+                     static_cast<int>(image->GetSize().GetX()), static_cast<int>(image->GetSize().GetY())};
+    SDL_RenderCopy(this->renderer, ((SDL_Image *) image)->GetSDL_Texture(), nullptr, &rect);
+
+}
+
+void SDL_Context::DrawImage(interface::gfx::Image *image, const Vec2 &pos, const Vec2 &size) {
+    Renderer::DrawImage(image, pos, size);
+}
+
 
 void SDL_Context::Init() {
     Renderer::Init();
@@ -47,7 +61,7 @@ void SDL_Context::DrawShape(const Shape &shape) {
     Renderer::DrawShape(shape);
 }
 
-void SDL_Context::SetColor(interface::gfx::Color color) {
+void SDL_Context::SetColor(const interface::gfx::Color &color) {
     Renderer::SetColor(color);
     SDL_SetRenderDrawColor(this->GetSDL_Renderer(), color.GetR(), color.GetG(), color.GetB(), color.GetA());
 }
@@ -74,4 +88,12 @@ void SDL_Context::DrawRect(int x, int y, int w, int h) {
 void SDL_Context::DrawPoint(int x, int y) {
     Renderer::DrawPoint(x, y);
     SDL_RenderDrawPoint(this->renderer, this->pos.GetX(), this->pos.GetY());
+}
+
+void SDL_Context::DrawRect(const Vec2 &pos, const Vec2 &size) {
+    Renderer::DrawRect(pos, size);
+    SDL_Rect rect = {static_cast<int>(pos.GetX()),
+                     static_cast<int>(pos.GetY()),
+                     static_cast<int>(size.GetX() * fScale.GetX()), static_cast<int>(size.GetY() * fScale.GetY())};
+    SDL_RenderFillRect(this->renderer, &rect);
 }

@@ -2,10 +2,22 @@
 #include "Game.h"
 #include "../util/util.h"
 
-using namespace game;
-using namespace interface::io;
 using namespace lib::math;
+using namespace interface::gfx;
+using namespace interface::io;
+using namespace simulation::gfx;
+using namespace simulation::core;
+using namespace core;
+using namespace game;
 
+Game::Game(interface::window::Window *window)
+        : GameLoop(window) {
+    Init();
+    resource = new SDL_Resource(GetRenderer());
+    simulation = new Simulation(renderer, resource);
+    simulation->SetRenderer(GetRenderer());
+    simulation->SetResource(resource);
+}
 
 Game::~Game() {}
 
@@ -19,19 +31,19 @@ void Game::Init() {
 
 void Game::SetRenderer(interface::gfx::Renderer *renderer) {
     GameLoop::SetRenderer(renderer);
-    simulation.SetRenderer(renderer);
+    simulation->SetRenderer(renderer);
 }
 
 void Game::Render() {
     GameLoop::Render();
     renderer->BeginFrame();
-    simulation.Render();
+    simulation->Render();
     renderer->Present();
 }
 
 void Game::Update() {
     GameLoop::Update();
-    simulation.Update();
+    simulation->Update();
 }
 
 void Game::Reset() {
@@ -89,3 +101,4 @@ void Game::SendEvent(const interface::io::Event &event) {
             break;
     }
 }
+

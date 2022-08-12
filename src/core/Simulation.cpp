@@ -1,14 +1,17 @@
 
 #include "Simulation.h"
 
-using namespace core;
-
-using namespace core;
+using namespace lib::math;
 using namespace interface::gfx;
+using namespace core;
 using namespace core::components;
+using namespace core::resources;
 
-Simulation::Simulation(Renderer *renderer)
-        : renderer(renderer) {}
+Simulation::Simulation(Renderer *renderer, Resource *resource)
+        : renderer(renderer), resource(resource) {
+
+    TestCircuit();
+}
 
 Simulation::~Simulation() noexcept {
     for (auto &component: components) {
@@ -50,5 +53,16 @@ void Simulation::DrawGrid() {
 }
 
 void Simulation::TestCircuit() {
-    Component *wire1 = new Wire(renderer);
+    Wire *input1 = new Wire(renderer);
+    Wire *input2 = new Wire(renderer);
+    Wire *output = new Wire(renderer);
+    AND *andGate = new AND(renderer, Vec2(100, 100), Vec2(50, 50));
+    andGate->SetImage(this->resource->GetAndImage());
+    andGate->SetInput1(input1);
+    andGate->SetInput2(input2);
+    andGate->SetOutput(output);
+
+    components.push_back(andGate);
+
 }
+

@@ -10,5 +10,8 @@ void AND::Update() {
 
 void AND::Render() {
     Component::Render();
+}
 
+void AND::SetOutput(Wire *output) {
+    this->output = output;
 }
