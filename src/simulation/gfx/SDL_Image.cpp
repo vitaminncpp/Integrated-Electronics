@@ -10,9 +10,10 @@ using namespace simulation::gfx;
 SDL_Image::SDL_Image(Renderer *renderer, const std::string &imagePath, const Vec2 &pos, const Vec2 &size)
         :
         Image(renderer, pos, size), texture(nullptr) {
+    this->path = imagePath;
+    SDL_Surface *surface = IMG_Load(imagePath.c_str());
 
-    SDL_Surface *surface = SDL_LoadBMP(imagePath.c_str());
-    texture = SDL_CreateTextureFromSurface(((SDL_Context *) this)->GetSDL_Renderer(), surface);
+    texture = SDL_CreateTextureFromSurface(((SDL_Context *) this->renderer)->GetSDL_Renderer(), surface);
 
     rect.x = pos.GetX();
     rect.y = pos.GetY();

@@ -13,7 +13,7 @@ namespace game {
         State state;
         core::resources::Resource *resource;
     public:
-        explicit Game(interface::window::Window *window);
+        explicit Game(interface::window::Window *window, interface::gfx::Renderer *renderer);
 
         ~Game() override;
 

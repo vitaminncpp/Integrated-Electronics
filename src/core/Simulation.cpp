@@ -63,6 +63,9 @@ void Simulation::TestCircuit() {
     andGate->SetOutput(output);
 
     components.push_back(andGate);
+    components.push_back(input1);
+    components.push_back(input2);
+    components.push_back(output);
 
 }
 

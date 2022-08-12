@@ -13,7 +13,7 @@ using namespace game;
 int main() {
     Window *window = new GameWindow("Game", 1366, 768);
     Renderer *renderer = new SDL_Context(((GameWindow *) window)->GetRenderer());
-    Game *game = new Game(window);
+    Game *game = new Game(window, renderer);
     window->SetInputBridge(game);
     game->SetRenderer(renderer);
     game->Go();

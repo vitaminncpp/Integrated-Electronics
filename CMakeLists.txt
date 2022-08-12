@@ -57,4 +57,4 @@ add_executable(Simulation
         src/core/components/CLKDigital.h)
 
 
-target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main)
+target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2_image)

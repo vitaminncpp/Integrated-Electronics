@@ -25,7 +25,7 @@ namespace core::components {
         ~Component() override;
 
         inline void SetImage(interface::gfx::Image *image) {
-            this->image;
+            this->image = image;
         }
 
         void Render() override;

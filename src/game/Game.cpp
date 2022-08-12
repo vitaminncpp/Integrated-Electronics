@@ -10,9 +10,10 @@ using namespace simulation::core;
 using namespace core;
 using namespace game;
 
-Game::Game(interface::window::Window *window)
+Game::Game(interface::window::Window *window, Renderer *renderer)
         : GameLoop(window) {
     Init();
+    GameLoop::SetRenderer(renderer);
     resource = new SDL_Resource(GetRenderer());
     simulation = new Simulation(renderer, resource);
     simulation->SetRenderer(GetRenderer());

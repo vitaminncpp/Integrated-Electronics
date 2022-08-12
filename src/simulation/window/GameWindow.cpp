@@ -1,6 +1,7 @@
 
 #include "../../util/util.h"
 #include "GameWindow.h"
+#include <SDL_image.h>
 
 using namespace simulation::window;
 using namespace interface::io;
@@ -31,7 +32,8 @@ void GameWindow::Reset() {
 void GameWindow::Init() {
     Window::Init();
 
-
+    SDL_Init(SDL_INIT_EVERYTHING);
+    IMG_Init(IMG_INIT_PNG);
     LOG("Subsystem Initialized");
     window = SDL_CreateWindow(
             this->GetTitle().c_str(),
