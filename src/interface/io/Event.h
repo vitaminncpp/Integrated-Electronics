@@ -106,7 +106,10 @@ namespace interface ::io {
             struct {
                 short x;
                 short y;
-                short wheelDelta;
+                short xrel;
+                short yrel;
+                short wheelX;
+                short wheelY;
             } mouse;
         };
     private:
@@ -128,6 +131,12 @@ namespace interface ::io {
             this->type = -1;
             this->flag = FLAG_NONE;
             this->data.keyCode = 0;
+            this->data.mouse.x = -1;
+            this->data.mouse.y = -1;
+            this->data.mouse.xrel = 0;
+            this->data.mouse.yrel = 0;
+            this->data.mouse.wheelX = 0;
+            this->data.mouse.wheelY = 0;
         }
 
         inline int GetType() const {
@@ -150,7 +159,7 @@ namespace interface ::io {
             this->flag |= flag;
         }
 
-        inline void SetData(EventData &data) {
+        inline void SetData(const EventData &data) {
             this->data = data;
         }
 

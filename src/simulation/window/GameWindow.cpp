@@ -94,7 +94,10 @@ void GameWindow::HandleInput() {
                     toBeSent.SetFlag(FLAG_MOUSE_R_DOWN);
                 }
                 toBeSent.SetData(
-                        {.mouse={.x=static_cast<short>(event.motion.x), .y=static_cast<short>(event.motion.y), .wheelDelta=0}});
+                        {.mouse={.x=static_cast<short>(event.motion.x),
+                                .y=static_cast<short>(event.motion.y),
+                                .xrel=0, .yrel = 0,
+                                .wheelX=0, .wheelY=0}});
                 break;
             case SDL_MOUSEBUTTONUP:
                 toBeSent.SetType(EVENT_TYPE_MOUSE);
@@ -105,7 +108,10 @@ void GameWindow::HandleInput() {
                 } else {
                 }
                 toBeSent.SetData(
-                        {.mouse={.x=static_cast<short>(event.motion.x), .y=static_cast<short>(event.motion.y), .wheelDelta=0}});
+                        {.mouse={.x=static_cast<short>(event.motion.x),
+                                .y=static_cast<short>(event.motion.y),
+                                .xrel=0, .yrel=0,
+                                .wheelX=0, .wheelY=0}});
                 break;
             case SDL_KEYDOWN:
                 toBeSent.SetType(EVENT_TYPE_KEYBOARD);
@@ -170,16 +176,21 @@ void GameWindow::HandleInput() {
                 toBeSent.SetData(
                         {.mouse={.x=static_cast<short>(x),
                                 .y=static_cast<short>(y),
-                                .wheelDelta=static_cast<short>(event.wheel.y)}});
+                                .xrel=0, .yrel=0,
+                                .wheelX = static_cast<short>(event.wheel.x),
+                                .wheelY = static_cast<short>(event.wheel.y)}});
                 break;
             case SDL_MOUSEMOTION:
                 toBeSent.SetType(EVENT_TYPE_MOUSE);
                 toBeSent.SetFlag(FLAG_MOUSE_MOVED);
                 toBeSent.SetData(
                         {.mouse={
-                                .x=static_cast<short>(event.motion.xrel),
-                                .y=static_cast<short>(event.motion.yrel),
-                                .wheelDelta=0}});
+                                .x=static_cast<short>(event.motion.x),
+                                .y=static_cast<short>(event.motion.y),
+                                .xrel=static_cast<short>(event.motion.xrel),
+                                .yrel=static_cast<short>(event.motion.yrel),
+                                .wheelX=0,
+                                .wheelY=0}});
                 break;
             default:
                 break;
