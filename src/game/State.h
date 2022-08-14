@@ -1,5 +1,6 @@
 #pragma once
 
+#define INVALID_STATE -1
 #define NORMAL_STATE 0
 #define ENABLE_TRANSLATION 10
 #define DISABLE_TRANSLATION 11

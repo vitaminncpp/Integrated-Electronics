@@ -75,6 +75,8 @@ void GameWindow::HandleInput() {
     SDL_Event event;
     Event toBeSent;
     int x = 0, y = 0;
+    int keyCode = 0;
+
     while (SDL_PollEvent(&event)) {
         toBeSent.Reset();
         switch (event.type) {
@@ -106,22 +108,78 @@ void GameWindow::HandleInput() {
                         {.mouse={.x=static_cast<short>(event.motion.x), .y=static_cast<short>(event.motion.y), .wheelDelta=0}});
                 break;
             case SDL_KEYDOWN:
+                toBeSent.SetType(EVENT_TYPE_KEYBOARD);
+                toBeSent.SetFlag(FLAG_KEY_DOWN);
+                switch (event.key.keysym.sym) {
+                    case SDLK_LCTRL:
+                        keyCode = KEYCODE_LCTRL;
+                        break;
+                    case SDLK_RCTRL:
+                        keyCode = KEYCODE_RCTRL;
+                        break;
+                    case SDLK_LALT:
+                        keyCode = KEYCODE_LALT;
+                        break;
+                    case SDLK_RALT:
+                        keyCode = KEYCODE_RALT;
+                        break;
+                    case SDLK_LSHIFT:
+                        keyCode = KEYCODE_LSHIFT;
+                        break;
+                    case SDLK_RSHIFT:
+                        keyCode = KEYCODE_RSHIFT;
+                        break;
+                    default:
+                        keyCode = event.key.keysym.sym;
+                        break;
+                }
+                toBeSent.SetData({.keyCode=keyCode});
                 break;
             case SDL_KEYUP:
+                toBeSent.SetType(EVENT_TYPE_KEYBOARD);
+                toBeSent.SetFlag(FLAG_KEY_UP);
+                switch (event.key.keysym.sym) {
+                    case SDLK_LCTRL:
+                        keyCode = KEYCODE_LCTRL;
+                        break;
+                    case SDLK_RCTRL:
+                        keyCode = KEYCODE_RCTRL;
+                        break;
+                    case SDLK_LALT:
+                        keyCode = KEYCODE_LALT;
+                        break;
+                    case SDLK_RALT:
+                        keyCode = KEYCODE_RALT;
+                        break;
+                    case SDLK_LSHIFT:
+                        keyCode = KEYCODE_LSHIFT;
+                        break;
+                    case SDLK_RSHIFT:
+                        keyCode = KEYCODE_RSHIFT;
+                        break;
+                    default:
+                        keyCode = event.key.keysym.sym;
+                        break;
+                }
+                toBeSent.SetData({.keyCode=keyCode});
                 break;
             case SDL_MOUSEWHEEL:
                 SDL_GetMouseState(&x, &y);
                 toBeSent.SetType(EVENT_TYPE_WHEEL);
                 toBeSent.SetFlag(FLAG_NONE);
                 toBeSent.SetData(
-                        {.mouse={.x=static_cast<short>(x), .y=static_cast<short>(y), .wheelDelta=static_cast<short>(event.wheel.y)}});
-
+                        {.mouse={.x=static_cast<short>(x),
+                                .y=static_cast<short>(y),
+                                .wheelDelta=static_cast<short>(event.wheel.y)}});
                 break;
             case SDL_MOUSEMOTION:
                 toBeSent.SetType(EVENT_TYPE_MOUSE);
                 toBeSent.SetFlag(FLAG_MOUSE_MOVED);
                 toBeSent.SetData(
-                        {.mouse={.x=static_cast<short>(event.motion.xrel), .y=static_cast<short>(event.motion.yrel), .wheelDelta=0}});
+                        {.mouse={
+                                .x=static_cast<short>(event.motion.xrel),
+                                .y=static_cast<short>(event.motion.yrel),
+                                .wheelDelta=0}});
                 break;
             default:
                 break;

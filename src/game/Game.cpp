@@ -65,12 +65,9 @@ void Game::SendEvent(const interface::io::Event &event) {
         case EVENT_TYPE_MOUSE:
             switch (event.GetFlag()) {
                 case FLAG_MOUSE_L_DOWN:
-                    state.SetState(ENABLE_TRANSLATION);
                     break;
                 case FLAG_MOUSE_L_UP:
-                    state.SetState(NORMAL_STATE);
                     break;
-
                 case FLAG_MOUSE_R_DOWN:
                     break;
                 case FLAG_MOUSE_R_UP:
@@ -83,7 +80,6 @@ void Game::SendEvent(const interface::io::Event &event) {
                         default:
                             break;
                     }
-
                     break;
                 default:
                     break;
@@ -97,6 +93,30 @@ void Game::SendEvent(const interface::io::Event &event) {
                 s = 1 / 1.05;
             }
             this->renderer->Scale(Vec2(event.GetData().mouse.x, event.GetData().mouse.y), s);
+            break;
+
+        case EVENT_TYPE_KEYBOARD:
+            switch (event.GetFlag()) {
+                case FLAG_KEY_DOWN:
+                    switch (event.GetData().keyCode) {
+                        case KEYCODE_LCTRL:
+                            this->state.SetState(ENABLE_TRANSLATION);
+                            break;
+                        default:
+                            break;
+                    }
+                    break;
+                case FLAG_KEY_UP:
+                    switch (event.GetData().keyCode) {
+                        case KEYCODE_LCTRL:
+                            this->state.SetState(NORMAL_STATE);
+                            break;
+                        default:
+                            break;
+                    }
+                default:
+                    break;
+            }
             break;
         default:
             break;
