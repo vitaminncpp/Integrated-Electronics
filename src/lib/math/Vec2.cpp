@@ -234,3 +234,13 @@ Vec2 &Vec2::operator*=(const Vec2 &s) {
     this->AdjustRT();
     return *this;
 }
+
+Vec2 Vec2::operator/(const Vec2 &s) const {
+    return Vec2(this->x / s.x, this->y / s.y);
+}
+
+Vec2 &Vec2::operator/=(const Vec2 &d) {
+    this->x /= d.x;
+    this->y /= d.y;
+    return *this;
+}

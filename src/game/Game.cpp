@@ -67,7 +67,8 @@ void Game::SendEvent(const interface::io::Event &event) {
                 case FLAG_MOUSE_L_DOWN:
                     switch (this->state.GetState()) {
                         case NORMAL_STATE:
-                            this->simulation->InitWire(Vec2(event.GetData().mouse.x, event.GetData().mouse.y) -
+                            this->simulation->InitWire(Vec2(event.GetData().mouse.x, event.GetData().mouse.y) /
+                                                       this->renderer->GetfScale() -
                                                        Vec2(this->renderer->GetfTranslate()));
                             break;
                         default:
@@ -98,7 +99,8 @@ void Game::SendEvent(const interface::io::Event &event) {
                             renderer->Translate(Vec2(event.GetData().mouse.xrel, event.GetData().mouse.yrel));
                             break;
                         case MOUSE_L_DOWN:
-                            this->simulation->RelocateWire(Vec2(event.GetData().mouse.x, event.GetData().mouse.y) -
+                            this->simulation->RelocateWire(Vec2(event.GetData().mouse.x, event.GetData().mouse.y) /
+                                                           this->renderer->GetfScale() -
                                                            Vec2(this->renderer->GetfTranslate()));
                             break;
                         default:

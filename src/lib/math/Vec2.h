@@ -51,9 +51,13 @@ namespace lib::math {
 
         Vec2 &operator*=(const Vec2 &s);
 
-        Vec2 operator/(double sd) const;
+        Vec2 operator/(double s) const;
+
+        Vec2 operator/(const Vec2 &s) const;
 
         Vec2 &operator/=(double d);
+
+        Vec2 &operator/=(const Vec2 &d);
 
         Vec2 &Norm();
 
