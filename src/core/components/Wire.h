@@ -7,8 +7,8 @@
 namespace core::components {
     class Wire : public core::components::Component {
     private:
-        core::components::Component *input;
-        core::components::Component *output;
+        core::components::Component *input = nullptr;
+        core::components::Component *output = nullptr;
         std::vector<lib::math::Vec2> path;
         bool value = false;
         int length = 0;
@@ -21,7 +21,7 @@ namespace core::components {
                 : core::components::Component(renderer, lib::math::Vec2(0, 0), lib::math::Vec2(0, 0)) {}
 
         inline explicit Wire(interface::gfx::Renderer *renderer, const lib::math::Vec2 &start)
-                : core::components::Component(renderer, start, lib::math::Vec2(0, 0)) {}
+                : core::components::Component(renderer, start, start + lib::math::Vec2(20, 20)) {}
 
         inline ~Wire() override {
 

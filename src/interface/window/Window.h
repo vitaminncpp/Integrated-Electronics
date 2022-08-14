@@ -9,11 +9,11 @@ namespace interface::window {
 
     class Window {
     protected:
-        int height;
-        int width;
-        std::string title;
-        interface::io::InputBridge *input;
-        interface::gfx::Renderer *renderer;
+        int height = 0;
+        int width = 0;
+        std::string title = "";
+        interface::io::InputBridge *input = nullptr;
+        interface::gfx::Renderer *renderer = nullptr;
     public:
         inline Window(const std::string &title, int width, int height)
                 : title(title), width(width), height(height) {}

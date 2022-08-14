@@ -10,8 +10,8 @@ namespace interface::game {
     class GameLoop : public interface::io::InputBridge {
     protected:
         bool isRunning = false;
-        interface::window::Window *window;
-        interface::gfx::Renderer *renderer;
+        interface::window::Window *window = nullptr;
+        interface::gfx::Renderer *renderer = nullptr;
     public:
         inline explicit GameLoop(interface::window::Window *window) {
             this->window = window;

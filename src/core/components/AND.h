@@ -37,9 +37,9 @@ namespace core::components {
 
     public:
 
-        void Update();
+        void Update() override;
 
-        void Render();
+        void Render() override;
 
         void SetOutput(Wire *output);
     };

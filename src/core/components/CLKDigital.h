@@ -8,7 +8,6 @@ namespace core::components {
     class CLKDigital : public Component {
     private:
         bool value = false;
-        interface::gfx::Image *image = nullptr;
         Wire *output = nullptr;
     public:
         inline explicit CLKDigital(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos,

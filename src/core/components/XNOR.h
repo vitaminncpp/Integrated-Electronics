@@ -6,9 +6,9 @@
 namespace core::components {
     class XNOR : public components::Component {
     private:
-        Wire *input1;
-        Wire *input2;
-        Wire *output;
+        Wire *input1 = nullptr;
+        Wire *input2 = nullptr;
+        Wire *output = nullptr;
     public:
         inline explicit XNOR(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos,
                              const lib::math::Vec2 &size)

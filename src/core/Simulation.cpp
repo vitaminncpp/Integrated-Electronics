@@ -28,7 +28,7 @@ void Simulation::Update() {
     for (auto &component: this->components) {
         component->Update();
     }
-    if (current) {
+    if (this->current) {
         current->Update();
     }
 }
@@ -38,8 +38,8 @@ void Simulation::Render() {
     for (auto &component: this->components) {
         component->Render();
     }
-    if (current) {
-        current->Render();
+    if (this->current) {
+        this->current->Render();
     }
 }
 
@@ -49,6 +49,9 @@ void Simulation::DrawGrid() {
         for (int j = 0; j < 1000; j += 20) {
             this->renderer->DrawRect(i - 1, j - 1, 3, 3);
         }
+    }
+    if (this->current) {
+        this->current->Render();
     }
 }
 
@@ -81,3 +84,16 @@ void Simulation::TestCircuit() {
 
 }
 
+void Simulation::InitWire(const Vec2 &v) {
+    if (this->current) {
+        delete this->current;
+        this->current = nullptr;
+    }
+    this->current = new components::Wire(this->renderer, v);
+}
+
+void Simulation::RelocateWire(const Vec2 &v) {
+    if (this->current) {
+        (static_cast<Wire *> (this->current))->SetEnd(v);
+    }
+}

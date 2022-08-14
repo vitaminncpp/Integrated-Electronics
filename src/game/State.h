@@ -2,8 +2,8 @@
 
 #define INVALID_STATE -1
 #define NORMAL_STATE 0
-#define ENABLE_TRANSLATION 10
-#define DISABLE_TRANSLATION 11
+#define LCTRL_DOWN 10
+#define MOUSE_L_DOWN 11
 
 namespace game {
     class State {

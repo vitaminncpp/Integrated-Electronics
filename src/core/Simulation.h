@@ -33,6 +33,17 @@ namespace core {
             this->resource = resource;
         }
 
+        void InitWire(const lib::math::Vec2 &v);
+
+        void RelocateWire(const lib::math::Vec2 &pos);
+
+        inline void AddCurrent() {
+            if (this->current) {
+                this->components.push_back(this->current);
+                this->current = nullptr;
+            }
+        }
+
     public:
         void Update();
 

@@ -15,6 +15,8 @@ namespace game {
     public:
         explicit Game(interface::window::Window *window, interface::gfx::Renderer *renderer);
 
+        Game(const Game &game);
+
         ~Game() override;
 
         void SetRenderer(interface::gfx::Renderer *renderer) override;

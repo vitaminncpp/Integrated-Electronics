@@ -21,6 +21,19 @@ namespace interface::gfx {
 
         virtual ~Renderer();
 
+        inline const lib::math::Vec2 &GetfTranslate() const {
+            return this->fTranslate;
+        }
+
+        inline const lib::math::Vec2 &GetfScale() const {
+            return this->fScale;
+        }
+
+        inline const lib::math::Vec2 &GetfScaleCenter() const {
+            return this->fScaleCenter;
+        }
+
+    public:
         virtual void Init();
 
         virtual void Reset();
