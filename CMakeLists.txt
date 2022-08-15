@@ -3,8 +3,7 @@ project(Simulated_Electronics)
 
 set(CMAKE_CXX_STANDARD 17)
 find_package(SDL2 REQUIRED)
-
-add_executable(Simulation
+set(SOURCE_FILES
         src/main/main.cpp
         src/simulation/window/GameWindow.cpp
         src/game/Game.cpp
@@ -59,7 +58,11 @@ add_executable(Simulation
         src/core/util/State.h
         src/game/State.cpp
         src/lib/dsa/Graph.cpp
-        src/lib/dsa/Graph.h)
+        src/lib/dsa/Graph.h
+        src/lib/dsa/Queue.cpp
+        src/lib/dsa/Queue.h)
+
+add_executable(Simulation ${SOURCE_FILES})
 
 
 target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2_image)

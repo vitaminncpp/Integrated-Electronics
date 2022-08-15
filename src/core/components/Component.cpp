@@ -17,5 +17,6 @@ void Component::Render() {
     if (this->image) {
         this->renderer->DrawImage(this->image, this->pos * 20);
     }
+    this->renderer->DrawRect(this->pos * 20, this->size);
 }
 

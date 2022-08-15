@@ -17,7 +17,7 @@ namespace interface::gfx {
 
     public:
         inline explicit Renderer() :
-                fTranslate(0, 0), fScale(1, 1), color(0) {};
+                fScale(1, 1), color(0) {};
 
         virtual ~Renderer();
 
@@ -66,9 +66,11 @@ namespace interface::gfx {
 
         virtual void DrawPoint(int i, int i1);
 
-        virtual void DrawRect(int x1, int y1, int x2, int y2);
+        virtual void FillRect(int x1, int y1, int x2, int y2);
 
         virtual void DrawRect(const lib::math::Vec2 &pos, const lib::math::Vec2 &size);
+
+        virtual void FillRect(const lib::math::Vec2 &pos, const lib::math::Vec2 &size);
 
 
     private:

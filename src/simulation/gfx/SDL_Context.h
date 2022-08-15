@@ -14,6 +14,7 @@ namespace simulation::gfx {
     public:
         inline explicit SDL_Context(SDL_Renderer *renderer)
                 : renderer(renderer), Renderer() {
+            this->fScaleCenter.SetXY(683, 384);
         }
 
         inline SDL_Renderer *GetSDL_Renderer() const {
@@ -47,15 +48,17 @@ namespace simulation::gfx {
 
         void DrawShape(const interface::gfx::Shape &shape) override;
 
-        void DrawRect(int x1, int y1, int x2, int y2) override;
+        void FillRect(int x1, int y1, int x2, int y2) override;
 
-        void DrawRect(const lib::math::Vec2 &pos, const lib::math::Vec2 &size) override;
+        void FillRect(const lib::math::Vec2 &pos, const lib::math::Vec2 &size) override;
 
         void SetColor(const interface::gfx::Color &color) override;
 
         void BeginFrame() override;
 
         void DrawPoint(int x, int y) override;
+
+        void DrawRect(const lib::math::Vec2 &pos, const lib::math::Vec2 &size) override;
 
     };
 }

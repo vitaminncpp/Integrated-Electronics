@@ -12,7 +12,7 @@ namespace core::components {
 
     public:
         inline explicit OR(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos)
-                : Component(renderer, pos, lib::math::Vec2(25, 25)) {}
+                : Component(renderer, pos, lib::math::Vec2(40, 40)) {}
 
         inline ~OR() override {
 

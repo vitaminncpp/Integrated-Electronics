@@ -54,22 +54,22 @@ void Renderer::DrawPoint(int x, int y) {
     PrePoss(x, y);
 }
 
-void Renderer::DrawRect(int x1, int y1, int x2, int y2) {
-    PrePoss(x1, y1);
+void Renderer::FillRect(int x1, int y1, int x2, int y2) {
+    PrePoss(Vec2(x1, y1));
 }
 
 void Renderer::Scale(const Vec2 &center, double s) {
     this->fScale *= s;
-    this->fScaleCenter = center - this->fTranslate;
+    this->fTranslate -= this->fScaleCenter * (this->fScale - 1) / 2;
 }
 
 void Renderer::PrePoss(int x, int y) {
-    pos.SetXY(x, y);
-    pos -= this->fScaleCenter;
-    pos *= this->fScale;
-    pos += this->fScaleCenter;
+    this->pos.SetXY(x, y);
+    this->pos -= this->fScaleCenter;
+    this->pos *= this->fScale;
+    this->pos += this->fScaleCenter;
 
-    pos += this->fTranslate;
+    this->pos += this->fTranslate;
 }
 
 void Renderer::PrePoss(const Vec2 &pos) {
@@ -81,13 +81,18 @@ void Renderer::PrePoss(const Vec2 &pos) {
     this->pos += this->fTranslate;
 }
 
-void Renderer::DrawRect(const Vec2 &pos, const Vec2 &size) {
+void Renderer::FillRect(const Vec2 &pos, const Vec2 &size) {
     PrePoss(pos);
 }
 
 Vec2 &Renderer::SetMousePosition(Vec2 &v) {
-    v += this->fScale * 10;
-    v /= this->fScale * 20;
-    v -= this->fTranslate / 20;
+    v -= this->fTranslate;
+    v -= this->fScaleCenter;
+    v /= this->fScale;
+    v += this->fScaleCenter;
     return v;
+}
+
+void Renderer::DrawRect(const Vec2 &pos, const Vec2 &size) {
+    PrePoss(pos);
 }
