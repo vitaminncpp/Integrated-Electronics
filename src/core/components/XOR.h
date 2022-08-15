@@ -10,10 +10,9 @@ namespace core::components {
         Wire *input2 = nullptr;
         Wire *output = nullptr;
     public:
-        inline XOR(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos, const lib::math::Vec2 &size)
-                : Component(renderer, pos, size) {
+        inline XOR(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos)
+                : Component(renderer, pos, lib::math::Vec2(25, 25)) {}
 
-        }
 
         inline ~XOR() override {
 

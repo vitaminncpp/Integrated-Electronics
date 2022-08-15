@@ -10,9 +10,8 @@ namespace core::components {
         bool value = false;
         Wire *output = nullptr;
     public:
-        inline explicit CLKDigital(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos,
-                                   const lib::math::Vec2 &size)
-                : Component(renderer, pos, size) {
+        inline explicit CLKDigital(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos)
+                : Component(renderer, pos, lib::math::Vec2(25, 25)) {
         }
 
         inline ~CLKDigital() override {

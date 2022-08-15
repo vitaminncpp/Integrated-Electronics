@@ -10,9 +10,8 @@ namespace core::components {
         Wire *input2 = nullptr;
         Wire *output = nullptr;
     public:
-        inline explicit XNOR(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos,
-                             const lib::math::Vec2 &size)
-                : core::components::Component(renderer, pos, size) {}
+        inline explicit XNOR(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos)
+                : core::components::Component(renderer, pos, lib::math::Vec2(25, 25)) {}
 
         ~XNOR();
 

@@ -10,8 +10,8 @@ namespace core::components {
         Wire *output = nullptr;
 
     public:
-        inline explicit NOT(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos, const lib::math::Vec2 &size)
-                : Component(renderer, pos, size) {}
+        inline explicit NOT(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos)
+                : Component(renderer, pos, lib::math::Vec2(25, 25)) {}
 
         inline ~NOT() override {
 
