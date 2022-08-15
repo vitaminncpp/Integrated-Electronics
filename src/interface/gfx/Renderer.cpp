@@ -60,7 +60,6 @@ void Renderer::FillRect(int x1, int y1, int x2, int y2) {
 
 void Renderer::Scale(const Vec2 &center, double s) {
     this->fScale *= s;
-    this->fTranslate -= this->fScaleCenter * (this->fScale - 1) / 2;
 }
 
 void Renderer::PrePoss(int x, int y) {
@@ -86,10 +85,8 @@ void Renderer::FillRect(const Vec2 &pos, const Vec2 &size) {
 }
 
 Vec2 &Renderer::SetMousePosition(Vec2 &v) {
-    v -= this->fTranslate;
-    v -= this->fScaleCenter;
     v /= this->fScale;
-    v += this->fScaleCenter;
+    v -= this->fTranslate;
     return v;
 }
 

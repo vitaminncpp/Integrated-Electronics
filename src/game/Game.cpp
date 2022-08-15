@@ -66,6 +66,8 @@ void Game::SendEvent(const interface::io::Event &event) {
         case EVENT_TYPE_MOUSE:
             mouse.SetXY(event.GetData().mouse.x, event.GetData().mouse.y);
             this->renderer->SetMousePosition(mouse);
+            mouse += 10;
+            mouse /= 20;
             mouse.Floor();
             this->simulation->SetXY(mouse.GetX(), mouse.GetY());
 
