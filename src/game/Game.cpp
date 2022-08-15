@@ -65,11 +65,10 @@ void Game::SendEvent(const interface::io::Event &event) {
     switch (event.GetType()) {
         case EVENT_TYPE_MOUSE:
             mouse.SetXY(event.GetData().mouse.x, event.GetData().mouse.y);
-            mouse += this->renderer->GetfScale() * 10;
-            mouse /= this->renderer->GetfScale() * 20;
-            mouse -= this->renderer->GetfTranslate() / 20;
+            this->renderer->SetMousePosition(mouse);
             mouse.Floor();
             this->simulation->SetXY(mouse.GetX(), mouse.GetY());
+
             switch (event.GetFlag()) {
                 case FLAG_MOUSE_L_DOWN:
                     switch (this->state.GetState()) {

@@ -84,3 +84,10 @@ void Renderer::PrePoss(const Vec2 &pos) {
 void Renderer::DrawRect(const Vec2 &pos, const Vec2 &size) {
     PrePoss(pos);
 }
+
+Vec2 &Renderer::SetMousePosition(Vec2 &v) {
+    v += this->fScale * 10;
+    v /= this->fScale * 20;
+    v -= this->fTranslate / 20;
+    return v;
+}

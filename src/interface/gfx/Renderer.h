@@ -33,6 +33,8 @@ namespace interface::gfx {
             return this->fScaleCenter;
         }
 
+        lib::math::Vec2 &SetMousePosition(lib::math::Vec2 &vec2);
+
     public:
         virtual void Init();
 

@@ -51,7 +51,7 @@ void Simulation::DrawGrid() {
         }
     }
     if (state.GetX() != 1 && state.GetY() != -1) {
-        this->renderer->DrawRect(state.GetX() * 20 - 2, state.GetY() * 20 - 2, 5, 5);
+        this->renderer->DrawRect(state.GetX() * 20 - 3, state.GetY() * 20 - 3, 7, 7);
     }
 }
 

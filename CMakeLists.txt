@@ -54,7 +54,7 @@ add_executable(Simulation
         src/core/Circuit.cpp
         src/core/Circuit.h
         src/core/components/CLKDigital.cpp
-        src/core/components/CLKDigital.h src/core/util/State.cpp src/core/util/State.h)
+        src/core/components/CLKDigital.h src/core/util/State.cpp src/core/util/State.h src/game/State.cpp src/lib/dsa/Graph.cpp src/lib/dsa/Graph.h)
 
 
 target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2_image)

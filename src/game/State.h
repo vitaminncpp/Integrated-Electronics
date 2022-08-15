@@ -13,9 +13,12 @@ namespace game {
         };
         struct MouseState {
             int mouseButton = -1;
-            int mouseX = 0;
-            int mouseY = 0;
-            int mouseWheel = 0;
+            int mouseX = -1;
+            int mouseY = -1;
+            int mouseXrel = 0;
+            int mouseYrel = 0;
+            int wheelX = 0;
+            int wheelY = 0;
             unsigned int mouseFlags = 0;
         };
     private:
@@ -99,36 +102,7 @@ namespace game {
             this->mouseStateNext = mouseState;
         }
 
-        void Reset() {
-            state = -1;
-            statePrev = -1;
-            stateNext = -1;
+        void Reset();
 
-            keyState.keyCode = -1;
-            keyState.keyFlags = 0;
-            keyStatePrev.keyCode = -1;
-            keyStatePrev.keyFlags = 0;
-            keyStateNext.keyCode = -1;
-            keyStateNext.keyFlags = 0;
-
-
-            mouseState.mouseButton = -1;
-            mouseState.mouseX = 0;
-            mouseState.mouseX = 0;
-            mouseState.mouseWheel = 0;
-            mouseState.mouseFlags = 0;
-
-            mouseStatePrev.mouseButton = -1;
-            mouseStatePrev.mouseX = 0;
-            mouseStatePrev.mouseX = 0;
-            mouseStatePrev.mouseWheel = 0;
-            mouseStatePrev.mouseFlags = 0;
-
-            mouseStateNext.mouseButton = -1;
-            mouseStateNext.mouseX = 0;
-            mouseStateNext.mouseX = 0;
-            mouseStateNext.mouseWheel = 0;
-            mouseStateNext.mouseFlags = 0;
-        }
     };
 }
