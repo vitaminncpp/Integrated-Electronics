@@ -61,15 +61,20 @@ void Game::Disable() {
 
 void Game::SendEvent(const interface::io::Event &event) {
     GameLoop::SendEvent(event);
+    Vec2 mouse;
     switch (event.GetType()) {
         case EVENT_TYPE_MOUSE:
+            mouse.SetXY(event.GetData().mouse.x, event.GetData().mouse.y);
+            mouse += this->renderer->GetfScale() * 10;
+            mouse /= this->renderer->GetfScale() * 20;
+            mouse -= this->renderer->GetfTranslate() / 20;
+            mouse.Floor();
+            this->simulation->SetXY(mouse.GetX(), mouse.GetY());
             switch (event.GetFlag()) {
                 case FLAG_MOUSE_L_DOWN:
                     switch (this->state.GetState()) {
                         case NORMAL_STATE:
-                            this->simulation->InitWire(Vec2(event.GetData().mouse.x, event.GetData().mouse.y) /
-                                                       this->renderer->GetfScale() -
-                                                       Vec2(this->renderer->GetfTranslate()));
+                            this->simulation->InitWire(mouse);
                             break;
                         default:
                             break;
@@ -99,9 +104,7 @@ void Game::SendEvent(const interface::io::Event &event) {
                             renderer->Translate(Vec2(event.GetData().mouse.xrel, event.GetData().mouse.yrel));
                             break;
                         case MOUSE_L_DOWN:
-                            this->simulation->RelocateWire(Vec2(event.GetData().mouse.x, event.GetData().mouse.y) /
-                                                           this->renderer->GetfScale() -
-                                                           Vec2(this->renderer->GetfTranslate()));
+                            this->simulation->RelocateWire(mouse);
                             break;
                         default:
                             break;

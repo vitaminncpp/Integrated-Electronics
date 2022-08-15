@@ -21,7 +21,7 @@ namespace core::components {
                 : core::components::Component(renderer, lib::math::Vec2(0, 0), lib::math::Vec2(0, 0)) {}
 
         inline explicit Wire(interface::gfx::Renderer *renderer, const lib::math::Vec2 &start)
-                : core::components::Component(renderer, start, start + lib::math::Vec2(20, 20)) {}
+                : core::components::Component(renderer, start, start + lib::math::Vec2(2, 0)) {}
 
         inline ~Wire() override {
 

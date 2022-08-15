@@ -45,13 +45,13 @@ void Simulation::Render() {
 
 void Simulation::DrawGrid() {
     this->renderer->SetColor(0);
-    for (int i = 0; i < 1000; i += 20) {
-        for (int j = 0; j < 1000; j += 20) {
-            this->renderer->DrawRect(i - 1, j - 1, 3, 3);
+    for (int i = 0; i < 100; i++) {
+        for (int j = 0; j < 100; j++) {
+            this->renderer->DrawRect(i * 20 - 1, j * 20 - 1, 3, 3);
         }
     }
-    if (this->current) {
-        this->current->Render();
+    if (state.GetX() != 1 && state.GetY() != -1) {
+        this->renderer->DrawRect(state.GetX() * 20 - 2, state.GetY() * 20 - 2, 5, 5);
     }
 }
 
@@ -59,20 +59,20 @@ void Simulation::TestCircuit() {
     Wire *input1 = new Wire(renderer);
     Wire *input2 = new Wire(renderer);
     Wire *output = new Wire(renderer);
-    AND *andGate = new AND(renderer, Vec2(100, 100), Vec2(50, 50));
+    AND *andGate = new AND(renderer, Vec2(8, 8));
     andGate->SetImage(this->resource->GetAndImage());
     andGate->SetInput1(input1);
     andGate->SetInput2(input2);
     andGate->SetOutput(output);
 
-    input1->SetStart(Vec2(100, 100));
-    input1->SetEnd(Vec2(100, 200));
+    input1->SetStart(Vec2(2, 2));
+    input1->SetEnd(Vec2(3, 3));
 
-    input2->SetStart(Vec2(150, 100));
-    input2->SetEnd(Vec2(150, 200));
+    input2->SetStart(Vec2(4, 4));
+    input2->SetEnd(Vec2(5, 5));
 
-    output->SetStart(Vec2(200, 125));
-    output->SetEnd(Vec2(400, 125));
+    output->SetStart(Vec2(6, 6));
+    output->SetEnd(Vec2(7, 7));
 
     input1->SetValue(true);
     input2->SetValue(true);

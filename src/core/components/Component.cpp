@@ -15,7 +15,7 @@ void Component::Update() {}
 void Component::Render() {
     Drawable::Render();
     if (this->image) {
-        this->renderer->DrawImage(this->image, this->pos);
+        this->renderer->DrawImage(this->image, this->pos * 20);
     }
 }
 

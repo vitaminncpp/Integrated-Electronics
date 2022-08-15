@@ -10,8 +10,8 @@ namespace core::components {
         Wire *input2 = nullptr;
         Wire *output = nullptr;
     public:
-        AND(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos, const lib::math::Vec2 &size)
-                : Component(renderer, pos, size) {
+        inline explicit AND(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos)
+                : Component(renderer, pos, lib::math::Vec2(25, 25)) {
 
         }
 

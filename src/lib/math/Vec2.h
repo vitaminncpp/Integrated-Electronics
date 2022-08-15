@@ -39,6 +39,8 @@ namespace lib::math {
 
         Vec2 operator-(const Vec2 &v) const;
 
+        Vec2 operator-(double d) const;
+
         Vec2 &operator-=(const Vec2 &v);
 
         Vec2 &operator-=(double r);
@@ -80,6 +82,10 @@ namespace lib::math {
         Vec2 &Rotate(double t, const Vec2 &v);
 
         Vec2 GetRotate(double t, const Vec2 &v);
+
+        Vec2 &Floor();
+
+        Vec2 GetFloor() const;
 
         inline double GetX() const {
             return this->x;
@@ -129,5 +135,6 @@ namespace lib::math {
             this->t = t;
             AdjustXY();
         }
+
     };
 }

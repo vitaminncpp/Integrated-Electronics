@@ -141,8 +141,9 @@ Vec2 &Vec2::operator-=(const Vec2 &v) {
 }
 
 Vec2 &Vec2::operator-=(double r) {
-    this->r -= r;
-    this->AdjustXY();
+    this->x -= r;
+    this->y -= r;
+    this->AdjustRT();
     return *this;
 }
 
@@ -242,5 +243,21 @@ Vec2 Vec2::operator/(const Vec2 &s) const {
 Vec2 &Vec2::operator/=(const Vec2 &d) {
     this->x /= d.x;
     this->y /= d.y;
+    AdjustRT();
     return *this;
+}
+
+Vec2 Vec2::operator-(double d) const {
+    return Vec2(this->x - d, this->y - d);
+}
+
+Vec2 &Vec2::Floor() {
+    this->x = floor(this->x);
+    this->y = floor(this->y);
+    AdjustRT();
+    return *this;
+}
+
+Vec2 Vec2::GetFloor() const {
+    return Vec2(floor(this->x), floor(this->y));
 }

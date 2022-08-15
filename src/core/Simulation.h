@@ -7,6 +7,7 @@
 #include "components/OR.h"
 #include "components/Wire.h"
 #include "Resource.h"
+#include "util/State.h"
 
 namespace core {
 
@@ -17,7 +18,7 @@ namespace core {
         int count = 0;
         components::Component *current = nullptr;
         resources::Resource *resource = nullptr;
-
+        util::State state;
         int clock = 0;
 
     public:
@@ -42,6 +43,10 @@ namespace core {
                 this->components.push_back(this->current);
                 this->current = nullptr;
             }
+        }
+
+        inline void SetXY(int x, int y) {
+            this->state.SetXY(x, y);
         }
 
     public:
