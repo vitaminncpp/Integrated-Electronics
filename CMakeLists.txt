@@ -1,7 +1,6 @@
 cmake_minimum_required(VERSION 3.16)
 project(Simulated_Electronics)
-
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 find_package(SDL2 REQUIRED)
 set(SOURCE_FILES
         src/main/main.cpp

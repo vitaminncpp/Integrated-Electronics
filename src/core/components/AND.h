@@ -11,13 +11,9 @@ namespace core::components {
         Wire *output = nullptr;
     public:
         inline explicit AND(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos)
-                : Component(renderer, pos, lib::math::Vec2(40, 40)) {
+                : Component(renderer, pos, lib::math::Vec2(40, 40)) {}
 
-        }
-
-        inline ~AND() override {
-
-        };
+        inline ~AND() override {};
 
         inline void SetInput1(Wire *input1) {
             this->input1 = input1;

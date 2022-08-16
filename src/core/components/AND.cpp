@@ -5,7 +5,11 @@ using namespace core::components;
 
 void AND::Update() {
     Component::Update();
-    //this->output->SetValue(this->input1->GetValue() && this->input2->GetValue());
+    if (this->input1 && this->input2 && this->output) {
+        this->output->SetValue(this->input1->GetValue() && this->input2->GetValue());
+    } else if (this->output) {
+        this->output->SetValue(false);
+    }
 }
 
 void AND::Render() {
