@@ -17,6 +17,7 @@ namespace simulation::gfx {
         SDL_Texture *texture;
         SDL_Rect rect{};
 
+
     public:
         explicit SDL_Image(interface::gfx::Renderer *renderer, const std::string &imagePath, const lib::math::Vec2 &pos,
                            const lib::math::Vec2 &size);
@@ -28,7 +29,7 @@ namespace simulation::gfx {
         inline SDL_Texture *GetSDL_Texture() const {
             return this->texture;
         }
-
+        
         inline SDL_Rect *GetSDL_Rect() const {
             return (SDL_Rect *) &this->rect;
         }
