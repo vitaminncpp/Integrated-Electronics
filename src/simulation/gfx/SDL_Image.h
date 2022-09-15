@@ -29,7 +29,7 @@ namespace simulation::gfx {
         inline SDL_Texture *GetSDL_Texture() const {
             return this->texture;
         }
-        
+
         inline SDL_Rect *GetSDL_Rect() const {
             return (SDL_Rect *) &this->rect;
         }

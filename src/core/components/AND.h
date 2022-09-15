@@ -11,7 +11,7 @@ namespace core::components {
         Wire *output = nullptr;
     public:
         inline explicit AND(interface::gfx::Renderer *renderer, const lib::math::Vec2 &pos)
-                : Component(renderer, pos, lib::math::Vec2(70, 50)) {}
+                : Component(renderer, pos, lib::math::Vec2(101, 81)) {}
 
         inline ~AND() override {};
 
