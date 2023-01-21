@@ -69,15 +69,15 @@ namespace lib::math {
 
         Vec2 GetOrtho() const;
 
-        double Dot(const Vec2 &v);
+        double Dot(const Vec2 &v) const;
 
-        double Cross(const Vec2 &v);
+        double Cross(const Vec2 &v) const;
 
-        double Distance(const Vec2 &v);
+        double Distance(const Vec2 &v) const;
 
         Vec2 &Rotate(double t);
 
-        Vec2 GetRotate(double t);
+        Vec2 GetRotate(double t) const;
 
         Vec2 &Rotate(double t, const Vec2 &v);
 

@@ -60,6 +60,9 @@ void Renderer::FillRect(int x1, int y1, int x2, int y2) {
 
 void Renderer::Scale(const Vec2 &center, double s) {
     this->fScale *= s;
+    if (this->fScale.GetR() == 0) {
+        this->fScale.SetXY(1, 1);
+    }
 }
 
 void Renderer::PrePoss(int x, int y) {

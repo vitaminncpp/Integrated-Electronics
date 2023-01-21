@@ -6,7 +6,7 @@ using namespace simulation::gfx;
 
 SDL_Resource::SDL_Resource(interface::gfx::Renderer *renderer)
         : Resource(renderer) {
-    this->andImage = new SDL_Image(renderer, "res/gates/and.png", Vec2(0, 0), Vec2(122, 122));
+    this->andImage = new SDL_Image(renderer, "res/gates/and.png", Vec2(0, 0), Vec2(70, 50));
     this->orImage = new SDL_Image(renderer, "res/gates/or.png", Vec2(0, 0), Vec2(40, 40));
 }
 

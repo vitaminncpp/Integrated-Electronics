@@ -1,0 +1,3 @@
+D:/Projects/cpp/Integrated Electronics/cmake-build-debug-visual-studio/CMakeFiles/Simulation.dir
+D:/Projects/cpp/Integrated Electronics/cmake-build-debug-visual-studio/CMakeFiles/edit_cache.dir
+D:/Projects/cpp/Integrated Electronics/cmake-build-debug-visual-studio/CMakeFiles/rebuild_cache.dir

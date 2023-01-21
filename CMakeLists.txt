@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.16)
-project(Simulated_Electronics)
+project(Integrated_Electronics)
 set(CMAKE_CXX_STANDARD 20)
-find_package(SDL2 REQUIRED)
+find_package(SDL2 CONFIG REQUIRED)
+find_package(SDL2-image CONFIG REQUIRED)
 set(SOURCE_FILES
         src/main/main.cpp
         src/simulation/window/GameWindow.cpp
@@ -62,6 +63,6 @@ set(SOURCE_FILES
         src/lib/dsa/Queue.h)
 
 add_executable(Simulation ${SOURCE_FILES})
+target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2::SDL2_image)
 
 
-target_link_libraries(Simulation PRIVATE SDL2::SDL2 SDL2::SDL2main SDL2_image)

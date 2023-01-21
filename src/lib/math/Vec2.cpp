@@ -24,13 +24,7 @@ Vec2::Vec2(const Vec2 &v) {
     this->t = v.t;
 }
 
-Vec2 &Vec2::operator=(const Vec2 &v) {
-    this->x = v.x;
-    this->y = v.y;
-    this->r = v.r;
-    this->t = v.t;
-    return *this;
-}
+Vec2 &Vec2::operator=(const Vec2 &v) = default;
 
 Vec2::Vec2(double r, double t, bool f) {
     this->r = r;
@@ -38,16 +32,23 @@ Vec2::Vec2(double r, double t, bool f) {
     this->AdjustXY();
 }
 
-Vec2::~Vec2() {}
+Vec2::~Vec2() = default;
 
 void Vec2::AdjustXY() {
+    if (this->r < 0) {
+        this->r = 0;
+        this->x = 0;
+        this->y = 0;
+        this->t = 0;
+        return;
+    }
     this->x = this->r * cos(this->t);
     this->y = this->r * sin(this->t);
 }
 
 void Vec2::AdjustRT() {
 
-    if (this->x == 0 && this->y == y) {
+    if (this->x == 0 && this->y == 0) {
         this->r = 0;
         this->t = 0;
         return;
@@ -55,69 +56,58 @@ void Vec2::AdjustRT() {
 
     if (this->x == 0) {
         if (this->y > 0) {
-            this->
-                    r = this->y;
-            this->
-                    t = PI / 2;
+            this->r = this->y;
+            this->t = PI / 2;
         } else {
-            this->
-                    r = -this->y;
-            this->
-                    t = 3 * PI / 2;
+            this->r = -this->y;
+            this->t = 3 * PI / 2;
         }
         return;
     }
 
     if (this->y == 0) {
         if (this->x > 0) {
-            this->
-                    r = this->x;
-            this->
-                    t = 0;
+            this->r = this->x;
+            this->t = 0;
         } else {
-            this->
-                    r = -this->x;
-            this->
-                    t = PI;
+            this->r = -this->x;
+            this->t = PI;
         }
         return;
     }
 
-    this->
-            r = sqrt(this->x * this->x + this->y * this->y);
+    this->r = sqrt(this->x * this->x + this->y * this->y);
     if (this->x >= 0) {
         if (this->y >= 0) {
-            this->
-                    t = asin(this->y / this->r);
+            this->t = asin(this->y / this->r);
         } else {
-            this->
-                    t = 2 * PI + asin(this->y / this->r);
+            this->t = 2 * PI + asin(this->y / this->r);
         }
     } else {
-        if (this->y >= 0) {
-            this->
-                    t = PI - asin(this->y / this->r);
-        } else {
-            this->
-                    t = PI - asin(this->y / this->r);
-        }
+        this->t = PI - asin(this->y / this->r);
+    }
+    if (this->r < 0) {
+        this->r = 0;
+        this->x = 0;
+        this->y = 0;
+        this->t = 0;
     }
 }
 
 Vec2 Vec2::operator+(const Vec2 &v) const {
-    return Vec2(this->x + v.x, this->y + v.y);
+    return {this->x + v.x, this->y + v.y};
 }
 
 Vec2 Vec2::operator+(const double r) const {
-    return Vec2(this->r + r, this->t, true);
+    return {this->r + r, this->t, true};
 }
 
 Vec2 Vec2::operator-() const {
-    return Vec2(-x, -y);
+    return {-x, -y};
 }
 
 Vec2 Vec2::operator-(const Vec2 &v) const {
-    return Vec2(this->x - v.x, this->y - v.y);
+    return {this->x - v.x, this->y - v.y};
 }
 
 Vec2 &Vec2::operator+=(const Vec2 &v) {
@@ -148,7 +138,7 @@ Vec2 &Vec2::operator-=(double r) {
 }
 
 Vec2 Vec2::operator*(double s) const {
-    return Vec2(this->x * s, this->y * s);
+    return {this->x * s, this->y * s};
 }
 
 Vec2 &Vec2::operator*=(double s) {
@@ -164,7 +154,7 @@ Vec2 &Vec2::Norm() {
 }
 
 Vec2 Vec2::operator/(double d) const {
-    return Vec2(this->r / d, this->t, true);
+    return {this->r / d, this->t, true};
 }
 
 Vec2 &Vec2::operator/=(double d) {
@@ -174,7 +164,7 @@ Vec2 &Vec2::operator/=(double d) {
 }
 
 Vec2 Vec2::GetNorm() const {
-    return Vec2(this->x / this->r, this->y / this->r);
+    return {this->x / this->r, this->y / this->r};
 }
 
 Vec2 &Vec2::Ortho() {
@@ -186,18 +176,18 @@ Vec2 &Vec2::Ortho() {
 }
 
 Vec2 Vec2::GetOrtho() const {
-    return Vec2(this->y, -this->x);
+    return {this->y, -this->x};
 }
 
-double Vec2::Dot(const Vec2 &v) {
+double Vec2::Dot(const Vec2 &v) const {
     return this->x * v.x + this->y * v.y;
 }
 
-double Vec2::Cross(const Vec2 &v) {
+double Vec2::Cross(const Vec2 &v) const {
     return this->x * v.y - this->y * v.x;
 }
 
-double Vec2::Distance(const Vec2 &v) {
+double Vec2::Distance(const Vec2 &v) const {
     return (*this - v).GetR();
 }
 
@@ -215,8 +205,8 @@ Vec2 &Vec2::Rotate(double t, const Vec2 &v) {
     return *this;
 }
 
-Vec2 Vec2::GetRotate(double t) {
-    return Vec2(this->r, this->t + t, true);
+Vec2 Vec2::GetRotate(double t) const {
+    return {this->r, this->t + t, true};
 }
 
 Vec2 Vec2::GetRotate(double t, const Vec2 &v) {
@@ -226,7 +216,7 @@ Vec2 Vec2::GetRotate(double t, const Vec2 &v) {
 }
 
 Vec2 Vec2::operator*(const Vec2 &s) const {
-    return Vec2(this->x * s.x, this->y * s.y);
+    return {this->x * s.x, this->y * s.y};
 }
 
 Vec2 &Vec2::operator*=(const Vec2 &s) {
@@ -237,7 +227,7 @@ Vec2 &Vec2::operator*=(const Vec2 &s) {
 }
 
 Vec2 Vec2::operator/(const Vec2 &s) const {
-    return Vec2(this->x / s.x, this->y / s.y);
+    return {this->x / s.x, this->y / s.y};
 }
 
 Vec2 &Vec2::operator/=(const Vec2 &d) {
@@ -248,7 +238,7 @@ Vec2 &Vec2::operator/=(const Vec2 &d) {
 }
 
 Vec2 Vec2::operator-(double d) const {
-    return Vec2(this->x - d, this->y - d);
+    return {this->x - d, this->y - d};
 }
 
 Vec2 &Vec2::Floor() {
@@ -259,5 +249,5 @@ Vec2 &Vec2::Floor() {
 }
 
 Vec2 Vec2::GetFloor() const {
-    return Vec2(floor(this->x), floor(this->y));
+    return {floor(this->x), floor(this->y)};
 }
